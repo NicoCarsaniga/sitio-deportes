@@ -1,6 +1,6 @@
 <?php
 
-    require_once 'models/spokon.model.php';
+    require_once 'models/torneos.model.php';
     require_once 'views/spokon.view.php';
 
     class SpokonController{
@@ -10,12 +10,13 @@
 
         public function __construct(){
 
-            $this->model = new SpokonModel();
+            $this->model = new TorneosModel();
             $this->view = new SpokonView();
         }
 
         public function ShowMain(){
-
-            echo 'muestro index';
+            $itemList = $this->model->getItemList();
+            $this->view->showItemList($itemList);
+            
         }
     }
