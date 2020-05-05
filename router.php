@@ -9,8 +9,8 @@ if (empty($_GET['action'])) {
     $_GET['action'] = 'index';
 }
 // toma la acción que viene del usuario y parsea los parámetros
-$accion = $_GET['action'];
-$parametros = explode('/', $accion);
+$action = $_GET['action'];
+$parametros = explode('/', $action);
 
 // decide que camino tomar según TABLA DE RUTEO
 switch ($parametros[0]) {

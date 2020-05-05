@@ -1,6 +1,6 @@
 <?php
 
-    class TorneosModel {
+    class TorneoModel {
 
         //creo la conexión 
     private function  createConection()
@@ -27,6 +27,19 @@
     $torneos = $sentencia->fetchAll(PDO::FETCH_OBJ);
 
     return $torneos;
+    }
+
+    public function getCategoryList(){
+
+        $db = $this->createConection();
+
+        $sentencia = $db->prepare("SELECT * FROM deportes");
+        $sentencia->execute();
+        $sports = $sentencia->fetchAll(PDO::FETCH_OBJ);
+
+
+        return $sports;
+
     }
 
     }
