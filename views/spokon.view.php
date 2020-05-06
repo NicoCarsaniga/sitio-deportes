@@ -25,8 +25,7 @@ class SpokonView
         
         echo '<ul>';
         foreach ($categories as $category) {
-            echo '<li>' . $category->deporte . '</li>';
-            echo '<li><a href="tournament/' . $category->id_deporte . '">Ver</a>';
+            echo '<li><a href="tournament/' . $category->id_deporte . '">' . $category->deporte . '</a>';
         }
         echo '</ul>';
     }
