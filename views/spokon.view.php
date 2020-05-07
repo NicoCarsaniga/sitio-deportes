@@ -88,7 +88,7 @@ class SpokonView{
     {
         echo '<h1> Bienvenidos a SPOKON</H1>';
         echo '<h3> El sitio para disfrutar de tus deportes favoritos </h3>';
-        echo '<h4>'. $tournamentById->deporte . '</h4>';
+        echo '<h4>' . $tournamentById->deporte . '</h4>';
         echo '<ul>';
         foreach ($itemListById as $item) {
             echo '<li>' . $item->torneo . ' </li>';
