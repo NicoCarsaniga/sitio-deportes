@@ -19,7 +19,13 @@ switch ($parametros[0]) {
         $controller = new SpokonController();
         $controller->showMain();
         break;
+    case 'addCategory':
+        $controller = new SpokonController();
+        $controller->addCategory();
+        break;
+
     case 'tournament':
         $controller = new SpokonController();
         $controller->showTournament($parametros[1]);
+    break;
 }

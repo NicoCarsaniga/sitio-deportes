@@ -54,6 +54,16 @@ class TorneoModel
         return $sports;
     }
 
+    public function insert($newSport) {
+         
+        $db = $this->createConection();
+
+        
+        $sentencia = $db->prepare("INSERT INTO deportes(deporte) VALUES(?)");
+        $sentencia->execute([$newSport]);
+    }
+
+    
     public function getCategoryById($id_torneo)
     {
         $db = $this->createConection();
