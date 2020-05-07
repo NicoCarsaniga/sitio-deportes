@@ -42,4 +42,13 @@
 
     }
 
+    public function insert($newSport) {
+         
+        $db = $this->createConection();
+
+        
+        $sentencia = $db->prepare("INSERT INTO deportes(deporte) VALUES(?)");
+        $sentencia->execute([$newSport]);
+    }
+
     }

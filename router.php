@@ -18,5 +18,9 @@ switch ($parametros[0]) {
         //instancio el objeto de la clase 
         $controller = new SpokonController();
         $controller->showMain();
-        break; 
+        break;
+    case 'addCategory':
+        $controller = new SpokonController();
+        $controller->addCategory($parametros[1]);
+        break;
 }

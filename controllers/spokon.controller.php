@@ -22,4 +22,14 @@
             $this->view->showCategoryList($categorys);
             
         }
+        public function addCategory($parametros){
+
+            $newSport = $_POST['newSport'];
+
+            $this->model->insert($newSport);
+
+            header('Location: '. BASE_URL. "index");
+
+
+        }
     }
