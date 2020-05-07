@@ -1,6 +1,6 @@
 <?php
 
-class SpokonView {
+class SpokonView{
 
     private function trashCode() {
         $html = '<!DOCTYPE html>
@@ -10,12 +10,12 @@ class SpokonView {
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-            <title>Lista de tareas</title>
+            <title>Spokon|tv</title>
         </head>
         <body>
     
         <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary mb-3">
-            <a class="navbar-brand" href="">TODOList</a>
+            <a class="navbar-brand" href="">Spokon.tv</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -37,7 +37,7 @@ class SpokonView {
 
         echo $this->trashCode();
 
-        echo '<h1> Bienvenidos a SPOKON</H1>';
+        echo '<h1> Bienvenidos a SPOKON</h1>';
         echo '<h3> Tu sitio para disfrutas de tus deportes favoritos </h3>';
         
         //var_dump($itemList);
@@ -48,19 +48,19 @@ class SpokonView {
             }
         }
 
-    public function ShowCategoryList($categorys){
+    public function ShowCategoryList($categories){
 
         echo '<h3>Lista Categoria</h3>';
-        echo '<ul>';
-            foreach($categorys as $category){
 
-                echo '<li>'.$category->deporte.'</li>';
-            }
+
+        echo '<ul>';
+        foreach ($categories as $category) {
+            echo '<li>' . $category->deporte . '</li>';
+            echo '<li><a href="tournament/' . $category->id_deporte . '">Ver</a>';
+        }
         echo '</ul>';
 
         $this->addSport();
-
-
     }
 
     public function addSport(){
@@ -82,4 +82,16 @@ class SpokonView {
               </form>';
     }
 
+
+    public function showItemListById($itemListById, $tournamentById)
+    {
+        echo '<h1> Bienvenidos a SPOKON</H1>';
+        echo '<h3> El sitio para disfrutar de tus deportes favoritos </h3>';
+        echo '<h4>'. $tournamentById->deporte . '</h4>';
+        echo '<ul>';
+        foreach ($itemListById as $item) {
+            echo '<li>' . $item->torneo . ' </li>';
+        }
+        echo '</ul>';
+    }
 }

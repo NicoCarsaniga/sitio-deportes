@@ -1,28 +1,34 @@
 <?php
 
-    require_once 'models/torneo.model.php';
-    require_once 'views/spokon.view.php';
+require_once 'models/torneo.model.php';
+require_once 'views/spokon.view.php';
 
-    class SpokonController{
+class SpokonController
+{
 
-        private $model;
-        private $view;
+    private $model;
+    private $view;
 
-        public function __construct(){
+    public function __construct()
+    {
 
-            $this->model = new TorneoModel();
-            $this->view = new SpokonView();
-        }
+        $this->model = new TorneoModel();
+        $this->view = new SpokonView();
+    }
 
-        public function ShowMain(){
-            $itemList = $this->model->getItemList();
-            $this->view->showItemList($itemList);
+    public function showMain()
+    {
+        $itemList = $this->model->getItemList();
+        $this->view->showItemList($itemList);
 
-            $categorys = $this->model->getCategoryList();
-            $this->view->showCategoryList($categorys);
+        $categories = $this->model->getCategoryList();
+        $this->view->showCategoryList($categories);
+    }
+
+
             
-        }
-        public function addCategory($parametros){
+        
+        public function addCategory(){
 
             $newSport = $_POST['newSport'];
 
@@ -32,4 +38,10 @@
 
 
         }
+    public function showTournament($id_torneo)
+    {
+        $itemListById = $this->model->getItemListById($id_torneo);
+        $tournamentById = $this->model->getCategoryById($id_torneo);
+        $this->view->showItemListById($itemListById, $tournamentById);
     }
+}
