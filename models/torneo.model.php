@@ -34,7 +34,7 @@ class TorneoModel
     {
         $db = $this->createConection();
         //2-Envío la consulta (3 pasos)
-        $sentencia = $db->prepare("SELECT * FROM torneos INNER JOIN deportes ON torneos.id_deporte_fk=deportes.id_deporte WHERE id_deporte_fk=1");
+        $sentencia = $db->prepare("SELECT * FROM torneos INNER JOIN deportes ON torneos.id_deporte_fk=deportes.id_deporte WHERE id_deporte_fk=?");
         $sentencia->execute([$id_deporte]);
         $torneo = $sentencia->fetchAll(PDO::FETCH_OBJ);
 
@@ -74,4 +74,23 @@ class TorneoModel
 
         return $torneo;
     }
-}
+    /*
+     public function addItem($newTournament)
+     {
+         $db = $this->createConection();
+         
+         $sentencia = $db->prepare("INSERT INTO torneos VALUES (?,?,?,?,?,?)");
+         $sentencia->execute([$newTournament[0], $newTournament[1], $newTournament[2], $newTournament[3], $newTournament[4], $newTournament[5]]);
+        }
+    */
+        
+        public function getItemInfo($id_torneo)
+        {
+            $db = $this->createConection();
+            $sentencia = $db->prepare("SELECT * FROM torneos WHERE id_torneo=?");
+            $sentencia->execute([$id_torneo]);
+            $infoTorneo = $sentencia->fetch(PDO::FETCH_OBJ);
+            
+            return $infoTorneo;
+        }
+    }

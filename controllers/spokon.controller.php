@@ -26,22 +26,39 @@ class SpokonController
     }
 
 
-            
-        
-        public function addCategory(){
-
-            $newSport = $_POST['newSport'];
-
-            $this->model->insert($newSport);
-
-            header('Location: '. BASE_URL. "index");
 
 
-        }
+    public function addCategory()
+    {
+
+        $newSport = $_POST['newSport'];
+
+        var_dump($newSport);
+        die();
+
+        $this->model->insert($newSport);
+
+        header('Location: ' . BASE_URL . "index");
+    }
+
+
+
     public function showTournament($id_torneo)
     {
+
         $itemListById = $this->model->getItemListById($id_torneo);
         $tournamentById = $this->model->getCategoryById($id_torneo);
+
+
         $this->view->showItemListById($itemListById, $tournamentById);
+    }
+
+
+    public function showItem($id_item)
+    {
+        $itemInfo = $this->model->getItemInfo($id_item);
+
+        $this->view->showItem($itemInfo);
+
     }
 }

@@ -36,14 +36,14 @@ class SpokonView{
     public function showItemList($itemList){
 
         echo $this->trashCode();
-
+        
         echo '<h1> Bienvenidos a SPOKON</h1>';
         echo '<h3> Tu sitio para disfrutas de tus deportes favoritos </h3>';
         
         //var_dump($itemList);
         echo '<ul>';
             foreach ($itemList as $item){
-                echo '<li>' . $item->torneo . ' </li>';
+                echo '<li><a href="item/' . $item->id_torneo . '">' . $item->torneo . '</a></li>';
         echo '</ul>';       
             }
         }
@@ -55,9 +55,11 @@ class SpokonView{
 
         echo '<ul>';
         foreach ($categories as $category) {
-            echo '<li><a href="tournament/' . $category->id_deporte . '">' . $category->deporte . '</a>';
+            echo '<li><a href="tournament/' . $category->id_deporte . '">' . $category->deporte . '</a></li>';
         }
         echo '</ul>';
+
+        
 
         $this->addSport();
     }
@@ -92,5 +94,17 @@ class SpokonView{
             echo '<li>' . $item->torneo . ' </li>';
         }
         echo '</ul>';
+    }
+
+    public function showItem($infoTorneo)
+    {
+        //var_dump($infoTorneo);
+
+        echo '<ul>';
+        foreach ( $infoTorneo as $info){
+
+            echo '<li>' . $info . '</li>';
+        }
+        echo '<ul>';
     }
 }

@@ -28,4 +28,11 @@ switch ($parametros[0]) {
         $controller = new SpokonController();
         $controller->showTournament($parametros[1]);
     break;
+
+    case 'item':
+        $controller = new SpokonController();
+        $controller->showItem($parametros[1]);
+    break;
+
+    
 }
