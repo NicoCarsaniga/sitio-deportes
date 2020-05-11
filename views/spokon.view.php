@@ -1,18 +1,21 @@
 <?php
 
-require_once ('libs/Smarty.class.php');
+require_once('libs/Smarty.class.php');
 
-class SpokonView{
-   
-    public function showItemList($itemList){
+class SpokonView
+{
+
+    public function showItemList($itemList)
+    {
 
         $smarty = new Smarty();
 
-       $smarty->assign('itemList', $itemList);
+        $smarty->assign('itemList', $itemList);
 
-       $smarty->display('showItemList.tpl');
+        $smarty->display('showItemList.tpl');
     }
-    public function ShowCategoryList($categories){
+    public function showCategoryList($categories)
+    {
 
         echo '<h3>Lista Categoria</h3>';
 
@@ -23,41 +26,48 @@ class SpokonView{
         }
         echo '</ul>';
 
-        
+
 
         $this->addSport();
     }
 
-    public function addSport(){
-
-
+    public function addSport()
+    {
         $smarty = new Smarty();
-        
+
         $smarty->display('formByCategory.tpl');
     }
 
 
-    public function showItemListById($itemListById, $tournamentById)
+    public function showItemListById($categories, $itemListById, $tournamentById)
     {
-        echo '<h1> Bienvenidos a SPOKON</H1>';
-        echo '<h3> El sitio para disfrutar de tus deportes favoritos </h3>';
-        echo '<h4>' . $tournamentById->deporte . '</h4>';
-        echo '<ul>';
-        foreach ($itemListById as $item) {
-            echo '<li>' . $item->torneo . ' </li>';
-        }
-        echo '</ul>';
+
+        $smarty = new Smarty();
+
+        $smarty->assign('categories', $categories);
+        $smarty->assign('itemListById', $itemListById);
+        $smarty->assign('tournamentById', $tournamentById);
+
+        $smarty->display('showItemListById.tpl');
     }
 
-    public function showItem($infoTorneo)
+    public function showItem($categories, $infoTorneo)
     {
-        //var_dump($infoTorneo);
+        $smarty = new Smarty();
 
-        echo '<ul>';
-        foreach ( $infoTorneo as $info){
+        $smarty->assign('categories', $categories);
+        $smarty->assign('infoTorneo', $infoTorneo);
 
-            echo '<li>' . $info . '</li>';
-        }
-        echo '<ul>';
+        $smarty->display('showItem.tpl');
+    }
+
+    public function showMainView($itemList, $categories)
+    {
+        $smarty = new Smarty();
+
+        $smarty->assign('itemList', $itemList);
+        $smarty->assign('categories', $categories);
+
+        $smarty->display('mainBody.tpl');
     }
 }

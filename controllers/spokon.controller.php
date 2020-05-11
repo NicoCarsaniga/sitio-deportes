@@ -18,11 +18,13 @@ class SpokonController
 
     public function showMain()
     {
+        //data para el main
         $itemList = $this->model->getItemList();
-        $this->view->showItemList($itemList);
-
         $categories = $this->model->getCategoryList();
-        $this->view->showCategoryList($categories);
+
+
+        $this->view->showMainView($itemList, $categories);
+
     }
 
 
@@ -33,8 +35,8 @@ class SpokonController
 
         $newSport = $_POST['newSport'];
 
-        var_dump($newSport);
-        die();
+        //var_dump($newSport);
+        //die();
 
         $this->model->insert($newSport);
 
@@ -45,20 +47,21 @@ class SpokonController
 
     public function showTournament($id_torneo)
     {
-
+        $categories = $this->model->getCategoryList();
         $itemListById = $this->model->getItemListById($id_torneo);
         $tournamentById = $this->model->getCategoryById($id_torneo);
 
 
-        $this->view->showItemListById($itemListById, $tournamentById);
+        $this->view->showItemListById($categories, $itemListById, $tournamentById);
     }
 
 
     public function showItem($id_item)
-    {
+    {        
+        $categories = $this->model->getCategoryList();
         $itemInfo = $this->model->getItemInfo($id_item);
 
-        $this->view->showItem($itemInfo);
+        $this->view->showItem($categories, $itemInfo);
 
     }
 }
