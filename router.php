@@ -1,6 +1,7 @@
 <?php
 
 require_once 'controllers/spokon.controller.php';
+require_once 'controllers/admin.controller.php';
 
 //defino la base de la url de forma dinámica
 define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
@@ -32,6 +33,11 @@ switch ($parametros[0]) {
     case 'item':
         $controller = new SpokonController();
         $controller->showItem($parametros[1]);
+    break;
+
+    case 'adminPage':
+        $controller = new AdminController();
+        $controller->showAdminPage();
     break;
 
     

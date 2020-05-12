@@ -64,4 +64,6 @@ class SpokonController
         $this->view->showItem($categories, $itemInfo);
 
     }
+
+    
 }

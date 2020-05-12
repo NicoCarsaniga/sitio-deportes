@@ -2,6 +2,4 @@
 
 {include 'showItemList.tpl'}
 
-    </div>
-</body>
-</html>
+{include 'footer.tpl'}

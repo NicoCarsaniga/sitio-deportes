@@ -14,22 +14,7 @@ class SpokonView
 
         $smarty->display('showItemList.tpl');
     }
-    public function showCategoryList($categories)
-    {
-
-        echo '<h3>Lista Categoria</h3>';
-
-
-        echo '<ul>';
-        foreach ($categories as $category) {
-            echo '<li><a href="tournament/' . $category->id_deporte . '">' . $category->deporte . '</a></li>';
-        }
-        echo '</ul>';
-
-
-
-        $this->addSport();
-    }
+    
 
     public function addSport()
     {
@@ -70,4 +55,6 @@ class SpokonView
 
         $smarty->display('mainBody.tpl');
     }
+
+    
 }
