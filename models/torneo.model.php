@@ -43,7 +43,6 @@ class TorneoModel
 
     public function getCategoryList()
     {
-
         $db = $this->createConection();
 
         $sentencia = $db->prepare("SELECT * FROM deportes");
@@ -57,13 +56,11 @@ class TorneoModel
     public function insert($newSport) {
          
         $db = $this->createConection();
-
-        
+ 
         $sentencia = $db->prepare("INSERT INTO deportes(deporte) VALUES(?)");
         $sentencia->execute([$newSport]);
     }
 
-    
     public function getCategoryById($id_torneo)
     {
         $db = $this->createConection();
@@ -74,15 +71,16 @@ class TorneoModel
 
         return $torneo;
     }
-    /*
-     public function addItem($newTournament)
+    
+     public function addItem($tournament, $idSportFK, $country, $description, $img)
      {
          $db = $this->createConection();
-         
-         $sentencia = $db->prepare("INSERT INTO torneos VALUES (?,?,?,?,?,?)");
-         $sentencia->execute([$newTournament[0], $newTournament[1], $newTournament[2], $newTournament[3], $newTournament[4], $newTournament[5]]);
+         var_dump($tournament, $idSportFK, $country, $description, $img);
+         die();
+         $sentencia = $db->prepare("INSERT INTO torneos VALUES (?,?,?,?,?)");
+         $sentencia->execute([$tournament], [$idSportFK], [$country], [$description], [$img]);
         }
-    */
+    
         
         public function getItemInfo($id_torneo)
         {

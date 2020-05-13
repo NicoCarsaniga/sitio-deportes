@@ -28,20 +28,25 @@ switch ($parametros[0]) {
     case 'tournament':
         $controller = new SpokonController();
         $controller->showTournament($parametros[1]);
-    break;
+        break;
 
     case 'item':
         $controller = new SpokonController();
         $controller->showItem($parametros[1]);
-    break;
+        break;
 
     case 'adminPage':
         $controller = new AdminController();
         $controller->showAdminPage();
-    break;
+        break;
+    
+    case 'addItem':
+        $controller = new AdminController();
+        $controller->addItem();
+        break;
 
-    default:  
+    default:
         $controller = new SpokonController();
         $controller->showError("404 not found");
-    break;
+        break;
 }

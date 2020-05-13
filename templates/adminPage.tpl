@@ -1,5 +1,6 @@
-{include 'header.tpl'}
-
+{include 'headerAdmin.tpl'}
+{include 'formByCategory.tpl'}
+{include 'addItem.tpl'}
 
     <div class="row">
     <div class="col-md-6">
@@ -29,6 +30,5 @@
         </div>
     </div>
 
-{include 'formByCategory.tpl'}
 
 {include 'footer.tpl'}
