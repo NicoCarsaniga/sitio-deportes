@@ -2,11 +2,8 @@
 
 
     <div class="row">
-        <table class="table col-sm">
-            <tbody>
             {foreach $categories item=category}
                 <tr>
-                    <td>{$category->deporte}</td>
                     <td><button type="button" class="btn btn-danger">Eliminar</button></td>
                     <td><button type="button" class="btn btn-warning">Editar</button></td>
                 </tr>
@@ -14,6 +11,11 @@
             </tbody>
         </table>
         <table class="table col-sm">
+        </div>
+          
+
+        <div class="col-md-6">
+        <table class="table">
             <tbody>
             {foreach $items item=tournament}
                 <tr>
@@ -24,9 +26,8 @@
             {/foreach}
             </tbody>
         </table>
-        
+        </div>
     </div>
-
 
 
 
