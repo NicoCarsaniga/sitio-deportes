@@ -4,57 +4,53 @@ require_once('libs/Smarty.class.php');
 
 class SpokonView
 {
+    private $smarty;
+
+    public function __construct($categories)
+    {
+        $this->smarty = new Smarty();
+        $this->smarty->assign('categories',$categories);
+    }
 
     public function showItemList($itemList)
     {
+        $this->smarty->assign('itemList', $itemList);
 
-        $smarty = new Smarty();
-
-        $smarty->assign('itemList', $itemList);
-
-        $smarty->display('showItemList.tpl');
+        $this->smarty->display('showItemList.tpl');
     }
     
-
     public function addSport()
     {
-        $smarty = new Smarty();
-
-        $smarty->display('formByCategory.tpl');
+        $this->smarty->display('formByCategory.tpl');
     }
 
-
-    public function showItemListById($categories, $itemListById, $tournamentById)
+    public function showItemListById($itemListById, $tournamentById)
     {
+        $this->smarty->assign('itemListById', $itemListById);
+        $this->smarty->assign('tournamentById', $tournamentById);
 
-        $smarty = new Smarty();
-
-        $smarty->assign('categories', $categories);
-        $smarty->assign('itemListById', $itemListById);
-        $smarty->assign('tournamentById', $tournamentById);
-
-        $smarty->display('showItemListById.tpl');
+        $this->smarty->display('showItemListById.tpl');
     }
 
-    public function showItem($categories, $infoTorneo)
+    public function showItem($infoTorneo)
+    {   
+        $this->smarty->assign('infoTorneo', $infoTorneo);
+
+        $this->smarty->display('showItem.tpl');
+    }
+
+    public function showMainView($itemList)
     {
-        $smarty = new Smarty();
+        $this->smarty->assign('itemList', $itemList);
 
-        $smarty->assign('categories', $categories);
-        $smarty->assign('infoTorneo', $infoTorneo);
-
-        $smarty->display('showItem.tpl');
+        $this->smarty->display('mainBody.tpl');
     }
 
-    public function showMainView($itemList, $categories)
+    public function showError($msg) 
     {
-        $smarty = new Smarty();
+        $this->smarty->assign('base_url', BASE_URL);
+        $this->smarty->assign('msg', $msg);
 
-        $smarty->assign('itemList', $itemList);
-        $smarty->assign('categories', $categories);
-
-        $smarty->display('mainBody.tpl');
+        $this->smarty->display('showError.tpl');
     }
-
-    
 }

@@ -21,7 +21,7 @@ switch ($parametros[0]) {
         $controller->showMain();
         break;
     case 'addCategory':
-        $controller = new SpokonController();
+        $controller = new AdminController();
         $controller->addCategory();
         break;
 
@@ -40,5 +40,8 @@ switch ($parametros[0]) {
         $controller->showAdminPage();
     break;
 
-    
+    default:  
+        $controller = new SpokonController();
+        $controller->showError("404 not found");
+    break;
 }

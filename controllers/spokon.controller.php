@@ -5,65 +5,40 @@ require_once 'views/spokon.view.php';
 
 class SpokonController
 {
-
     private $model;
     private $view;
 
     public function __construct()
     {
-
         $this->model = new TorneoModel();
-        $this->view = new SpokonView();
+        $categories = $this->model->getCategoryList();
+        $this->view = new SpokonView($categories);
     }
 
     public function showMain()
     {
         //data para el main
         $itemList = $this->model->getItemList();
-        $categories = $this->model->getCategoryList();
 
-
-        $this->view->showMainView($itemList, $categories);
-
+        $this->view->showMainView($itemList);
     }
-
-
-
-
-    public function addCategory()
-    {
-
-        $newSport = $_POST['newSport'];
-
-        //var_dump($newSport);
-        //die();
-
-        $this->model->insert($newSport);
-
-        header('Location: ' . BASE_URL . "index");
-    }
-
-
 
     public function showTournament($id_torneo)
     {
-        $categories = $this->model->getCategoryList();
         $itemListById = $this->model->getItemListById($id_torneo);
         $tournamentById = $this->model->getCategoryById($id_torneo);
 
-
-        $this->view->showItemListById($categories, $itemListById, $tournamentById);
+        $this->view->showItemListById($itemListById, $tournamentById);
     }
-
 
     public function showItem($id_item)
-    {        
-        $categories = $this->model->getCategoryList();
+    { 
         $itemInfo = $this->model->getItemInfo($id_item);
 
-        $this->view->showItem($categories, $itemInfo);
-
+        $this->view->showItem($itemInfo);
     }
 
-    
+    function showError($error) {
+        $this->view->showError($error); 
+    }
 }

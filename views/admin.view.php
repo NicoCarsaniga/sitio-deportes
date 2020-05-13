@@ -2,20 +2,21 @@
 
 require_once('libs/Smarty.class.php');
 
-
 class AdminView{
 
-    public function adminPage($itemList, $categories){
+    private $smarty;
 
-        
-        $smarty = new Smarty();
+    public function __construct()
+    {
+     $this->smarty = new Smarty();   
+    }
 
-        $smarty->assign('items', $itemList);
-        $smarty->assign('categories', $categories);
+    public function adminPage($itemList, $categories)
+    {
+        $this->smarty->assign('items', $itemList);
+        $this->smarty->assign('categories', $categories);
 
-        $smarty->display('adminPage.tpl');
-
-
+        $this->smarty->display('adminPage.tpl');
     }
 
 }
