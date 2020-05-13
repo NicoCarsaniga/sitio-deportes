@@ -2,6 +2,7 @@
 
 
     <div class="row">
+       <div class="col-md-6">
         <table class="table">
             <tbody>
             {foreach $categories item=category}
@@ -13,10 +14,10 @@
             {/foreach}
             </tbody>
         </table>
-        
+        </div>
           
 
-
+        <div class="col-md-6">
         {foreach $items item=tournament}
         <table class="table">
             <tbody>
@@ -29,7 +30,7 @@
             {/foreach}
             </tbody>
         </table>
-        
+        </div>
     </div>
     
 {/foreach}
