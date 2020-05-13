@@ -5,10 +5,10 @@
         <input name="tournament" type="text" class="form-control" placeholder="Torneo">
     </div>
     <div class="col-3">
-        <select class="form-control">
+        <select name='idSportFK' class="form-control">
             <option selected>Elija un deporte</option>
             <{foreach $categories item=category}
-                <option name="{$category->id_deporte}">{$category->deporte}</option>
+                <option value="{$category->id_deporte}">{$category->deporte}</option>
             {/foreach}
         </select>
     </div>

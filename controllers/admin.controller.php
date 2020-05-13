@@ -47,13 +47,11 @@ class AdminController{
         $description = $_POST['description'];
         $img = $_POST['img'];
 
-
-        /*
         if(empty($tournament | $idSportFK | $country | $description | $img)){
             $this->viewSpokon->showError("Faltan datos obligatorios");
             die();
         }
-*/
+
         $this->model->addItem($tournament, $idSportFK, $country, $description, $img);
 
         header('Location: ' . BASE_URL . "adminPage");

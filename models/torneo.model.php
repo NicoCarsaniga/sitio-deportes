@@ -53,10 +53,11 @@ class TorneoModel
         return $sports;
     }
 
-    public function insert($newSport) {
-         
+    public function insert($newSport)
+    {
+
         $db = $this->createConection();
- 
+
         $sentencia = $db->prepare("INSERT INTO deportes(deporte) VALUES(?)");
         $sentencia->execute([$newSport]);
     }
@@ -71,24 +72,23 @@ class TorneoModel
 
         return $torneo;
     }
-    
-     public function addItem($tournament, $idSportFK, $country, $description, $img)
-     {
-         $db = $this->createConection();
-         var_dump($tournament, $idSportFK, $country, $description, $img);
-         die();
-         $sentencia = $db->prepare("INSERT INTO torneos VALUES (?,?,?,?,?)");
-         $sentencia->execute([$tournament], [$idSportFK], [$country], [$description], [$img]);
-        }
-    
-        
-        public function getItemInfo($id_torneo)
-        {
-            $db = $this->createConection();
-            $sentencia = $db->prepare("SELECT * FROM torneos WHERE id_torneo=?");
-            $sentencia->execute([$id_torneo]);
-            $infoTorneo = $sentencia->fetch(PDO::FETCH_OBJ);
-            
-            return $infoTorneo;
-        }
+
+    public function addItem($tournament, $idSportFK, $country, $description, $img)
+    {
+        $db = $this->createConection();
+        $sentencia = $db->prepare("INSERT INTO torneos(torneo, id_deporte_fk, pais, descripcion, imagen) VALUES(?, ?, ?, ?, ?)");
+        $sentencia->execute([$tournament, $idSportFK, $country, $description, $img]);
+        //var_dump($sentencia->errorInfo()); 
+        //die();
     }
+
+    public function getItemInfo($id_torneo)
+    {
+        $db = $this->createConection();
+        $sentencia = $db->prepare("SELECT * FROM torneos WHERE id_torneo=?");
+        $sentencia->execute([$id_torneo]);
+        $infoTorneo = $sentencia->fetch(PDO::FETCH_OBJ);
+
+        return $infoTorneo;
+    }
+}
