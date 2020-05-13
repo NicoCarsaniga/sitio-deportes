@@ -18,7 +18,6 @@
           
 
         <div class="col-md-6">
-        {foreach $items item=tournament}
         <table class="table">
             <tbody>
             {foreach $items item=tournament}
@@ -32,8 +31,6 @@
         </table>
         </div>
     </div>
-    
-{/foreach}
 
 
 
