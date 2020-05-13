@@ -2,7 +2,7 @@
 
 
     <div class="row">
-        <table class="table">
+        <table class="table col-sm">
             <tbody>
             {foreach $categories item=category}
                 <tr>
@@ -13,12 +13,7 @@
             {/foreach}
             </tbody>
         </table>
-        
-          
-
-
-        {foreach $items item=tournament}
-        <table class="table">
+        <table class="table col-sm">
             <tbody>
             {foreach $items item=tournament}
                 <tr>
@@ -31,8 +26,7 @@
         </table>
         
     </div>
-    
-{/foreach}
+
 
 
 
