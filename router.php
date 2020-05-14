@@ -45,6 +45,15 @@ switch ($parametros[0]) {
         $controller->addItem();
         break;
 
+    case 'loginAdmin':
+        $controller = new AdminController();
+        $controller->loginAdmin();
+        break;
+
+        case 'verify':
+            $controller = new AdminController();
+            $controller->verifyAdmin();
+            break;
     default:
         $controller = new SpokonController();
         $controller->showError("404 not found");

@@ -56,4 +56,20 @@ class AdminController{
 
         header('Location: ' . BASE_URL . "adminPage");
     }
+
+    public function loginAdmin()
+    {
+        $this->view->loginAdmin();
+    }
+
+    public function verifyAdmin()
+    {
+        $adminUser = $_POST['adminUser'];
+        $adminPassword = $_POST['password'];
+        
+        if($adminUser == 'adminuser@admin.com' & $adminPassword == 'abc1234'){
+            
+            $this->showAdminPage();
+        }
+    }
 }

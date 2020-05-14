@@ -19,4 +19,8 @@ class AdminView{
         $this->smarty->display('adminPage.tpl');
     }
 
+    public function loginAdmin()
+    {
+        $this->smarty->display('loginAdmin.tpl');
+    }
 }
