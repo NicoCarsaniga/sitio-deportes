@@ -79,4 +79,33 @@ class AdminController{
 
         header('Location: ' . BASE_URL . "adminPage");
     }
+
+    public function editView($idItem){
+
+
+        $infoItem = $this->model->getItemInfo($idItem);
+        $categories = $this->model->getCategoryList();
+        
+        $this->view->editView($infoItem, $categories);
+
+    }
+
+    public function confirmEdition(){
+
+        $idItem = $_POST['idItem'];
+        $tournament = $_POST['tournament'];
+        $idSportFK = $_POST['idSportFK'];
+        $country = $_POST['country'];
+        $description = $_POST['description'];
+        $img = $_POST['img'];
+
+        if(empty($tournament || $idSportFK || $country || $description || $img)){
+            $this->viewSpokon->showError("Faltan datos obligatorios");
+            die();
+        }
+
+        $this->model->editItem($idItem, $tournament, $idSportFK, $country, $description, $img);
+
+        header('Location: ' . BASE_URL . "adminPage");
+    }
 }

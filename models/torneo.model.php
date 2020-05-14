@@ -98,4 +98,13 @@ class TorneoModel
         $sentencia = $db->prepare("DELETE FROM torneos WHERE id_torneo=?");
         $sentencia->execute([$idItem]);
     }
+
+    public function editItem($idItem, $tournament, $idSportFK, $country, $description, $img){
+
+        $db= $this->createConection();
+
+        $sentencia = $db->prepare("UPDATE torneos SET torneo=?, deporte=?, pais=?, descripcion=?, imagen=? WHERE id_torneo=?");
+        $sentencia->execute([$tournament, $idSportFK, $country, $description, $img, $idItem]);
+
+    }
 }

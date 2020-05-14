@@ -60,6 +60,16 @@ switch ($parametros[0]) {
         $controller->deleteItem($parametros[1]);
         break;
 
+    case 'editView':
+        $controller = new AdminController();
+        $controller->editView($parametros[1]);
+        break;
+    
+    case 'edit':
+        $controller = new AdminController();
+        $controller->confirmEdition();
+        break;
+
     default:
         $controller = new SpokonController();
         $controller->showError("404 not found");
