@@ -50,10 +50,16 @@ switch ($parametros[0]) {
         $controller->loginAdmin();
         break;
 
-        case 'verify':
-            $controller = new AdminController();
-            $controller->verifyAdmin();
-            break;
+    case 'verify':
+        $controller = new AdminController();
+        $controller->verifyAdmin();
+        break;
+
+    case 'delete':
+        $controller = new AdminController();
+        $controller->deleteItem($parametros[1]);
+        break;
+
     default:
         $controller = new SpokonController();
         $controller->showError("404 not found");

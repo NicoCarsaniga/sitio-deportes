@@ -72,4 +72,11 @@ class AdminController{
             $this->showAdminPage();
         }
     }
+
+    public function deleteItem($idItem)
+    {
+        $success = $this->model->deleteItem($idItem);
+
+        header('Location: ' . BASE_URL . "adminPage");
+    }
 }

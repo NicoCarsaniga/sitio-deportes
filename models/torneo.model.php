@@ -91,4 +91,11 @@ class TorneoModel
 
         return $infoTorneo;
     }
+
+    public function deleteItem($idItem)
+    {
+        $db = $this->createConection();
+        $sentencia = $db->prepare("DELETE FROM torneos WHERE id_torneo=?");
+        $sentencia->execute([$idItem]);
+    }
 }

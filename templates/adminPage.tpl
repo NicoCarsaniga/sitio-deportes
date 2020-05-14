@@ -21,8 +21,8 @@
                 {foreach $items item=tournament}
                     <tr>
                         <td>{$tournament->torneo}</td>
-                        <td><button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></td>
-                        <td><button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button></td>
+                        <td><a href="" class="btn btn-warning"><i class="fas fa-edit"></i></td>
+                        <td><a href="delete/{$tournament->id_torneo}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></td>
                     </tr>
                 {/foreach}
                 </tbody>
