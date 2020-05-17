@@ -103,7 +103,7 @@ class TorneoModel
 
         $db= $this->createConection();
 
-        $sentencia = $db->prepare("UPDATE torneos SET torneo=?, deporte=?, pais=?, descripcion=?, imagen=? WHERE id_torneo=?");
+        $sentencia = $db->prepare("UPDATE torneos SET torneo=?, id_deporte_fk=?, pais=?, descripcion=?, imagen=? WHERE id_torneo=?");
         $sentencia->execute([$tournament, $idSportFK, $country, $description, $img, $idItem]);
 
     }

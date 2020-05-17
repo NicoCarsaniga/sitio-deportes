@@ -29,7 +29,7 @@
   </div>
   <div class="form-row">
     <div class="custom-file col-md-6 mb-3">
-        <input type="file" class="custom-file-input form-control" id="validatedCustomFile" value="{$infoItem->imagen}" name="img" required>
+        <input type="file" class="custom-file-input form-control" id="validatedCustomFile" value="{$infoItem->imagen}" name="img">
         <label class="custom-file-label" for="validatedCustomFile">Eliga una Imagen...</label>
     </div>
   </div>

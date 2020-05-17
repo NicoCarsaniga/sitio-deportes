@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-05-2020 a las 17:50:43
+-- Tiempo de generación: 15-05-2020 a las 18:57:50
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.9
 
@@ -43,7 +43,9 @@ INSERT INTO `deportes` (`id_deporte`, `deporte`) VALUES
 (3, 'Rugby'),
 (4, 'Automovilismo'),
 (5, 'Vóley'),
-(6, 'Tenis');
+(6, 'Tenis'),
+(7, 'Boxeo'),
+(10, 'Jiu-Jitsu');
 
 -- --------------------------------------------------------
 
@@ -54,7 +56,7 @@ INSERT INTO `deportes` (`id_deporte`, `deporte`) VALUES
 CREATE TABLE `torneos` (
   `id_torneo` int(11) NOT NULL,
   `torneo` varchar(100) NOT NULL,
-  `deporte` int(11) NOT NULL,
+  `id_deporte_fk` int(11) NOT NULL,
   `pais` varchar(100) NOT NULL,
   `descripcion` text NOT NULL,
   `imagen` varchar(100) NOT NULL
@@ -64,10 +66,10 @@ CREATE TABLE `torneos` (
 -- Volcado de datos para la tabla `torneos`
 --
 
-INSERT INTO `torneos` (`id_torneo`, `torneo`, `deporte`, `pais`, `descripcion`, `imagen`) VALUES
-(1, 'SAF', 1, 'Argentina', 'Superliga Argentina de Fútbol.\r\nPrimera división del fútbol argentino. Pasión y locura todo en un mismo lugar.', ''),
-(2, 'Premier League', 1, 'Reuino Unido', 'Premier League.\r\nPrimera división del fútbol inglés. Precisión e intesidad hasta el último minuto.', ''),
-(3, 'LaLiga', 1, 'España', 'Liga Española.\r\nCampeonato Nacional de Liga de Primera División de España. Los méjores haciendo gala de su buen fútbol.', ''),
+INSERT INTO `torneos` (`id_torneo`, `torneo`, `id_deporte_fk`, `pais`, `descripcion`, `imagen`) VALUES
+(1, 'SAF', 1, 'Argentina', 'Superliga Argentina de Fútbol.Primera división del fútbol argentino. Pasión y locura todo en un mismo lugar.', ''),
+(2, 'Premier League', 1, 'Reuino Unido', 'Premier League.\r\nPrimera división del fútbol inglés. Precisión e intesidad hasta el último minuto.', 'premier_league.png'),
+(3, 'LaLiga', 1, 'España', 'Liga Española.\r\nCampeonato Nacional de Liga de Primera División de España. Los méjores haciendo gala de su buen fútbol.', 'la_liga.png'),
 (4, 'Liga Nacional', 2, 'Argentina', 'La Liga Nacional de Básquet es la máxima división del básquet argentino.', ''),
 (5, 'Liga ACB', 2, 'España', 'La Liga ACB  es la principal liga de baloncesto profesional de España. Está regida por la Asociación de Clubes de Baloncesto (ACB) .', ''),
 (6, 'NBA', 2, 'Estado Unidos', 'La National Basketball Association, más conocida simplemente por sus siglas NBA, es una liga privada de baloncesto profesional que se disputa en Estados Unidos desde 1946', ''),
@@ -81,8 +83,7 @@ INSERT INTO `torneos` (`id_torneo`, `torneo`, `deporte`, `pais`, `descripcion`, 
 (15, 'Liga Femenina de Voleibol Argentino', 5, 'Argentina', 'La Liga Femenina de Voleibol Argentino es el máximo torneo de vóley femenino de la Argentina. El equipo campeón clasifica al Sudamericano de Clubes Campeones de Voleibol Femenino. ', ''),
 (16, 'Australian Open', 6, 'Australia', 'Los mejores del ranking ATP compiten por este Grand Slam.', ''),
 (17, 'US Open', 6, 'Estados Unidos', 'Los mejores del ranking ATP compiten por este Grand Slam.', ''),
-(18, 'Wimbledon', 6, 'Inglaterra', 'Los mejores del ranking ATP compiten en el torneo más longevo.', ''),
-(19, 'Roland Garros', 6, 'Francia', 'Los mejores del ranking ATP compiten en este Grand Slam.', '');
+(25, 'Campeonato Mundial CMB Pesado', 7, 'Estados Unidos', 'Pelea por el cinturón de los pesos pesados CMB', '');
 
 --
 -- Índices para tablas volcadas
@@ -99,7 +100,7 @@ ALTER TABLE `deportes`
 --
 ALTER TABLE `torneos`
   ADD PRIMARY KEY (`id_torneo`),
-  ADD KEY `deporte` (`deporte`);
+  ADD KEY `deporte` (`id_deporte_fk`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -109,13 +110,13 @@ ALTER TABLE `torneos`
 -- AUTO_INCREMENT de la tabla `deportes`
 --
 ALTER TABLE `deportes`
-  MODIFY `id_deporte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_deporte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `torneos`
 --
 ALTER TABLE `torneos`
-  MODIFY `id_torneo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_torneo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- Restricciones para tablas volcadas
@@ -125,7 +126,7 @@ ALTER TABLE `torneos`
 -- Filtros para la tabla `torneos`
 --
 ALTER TABLE `torneos`
-  ADD CONSTRAINT `torneos_ibfk_1` FOREIGN KEY (`deporte`) REFERENCES `deportes` (`id_deporte`);
+  ADD CONSTRAINT `torneos_ibfk_1` FOREIGN KEY (`id_deporte_fk`) REFERENCES `deportes` (`id_deporte`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
