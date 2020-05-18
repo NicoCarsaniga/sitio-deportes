@@ -1,19 +1,22 @@
 <?php
 
 require_once 'models/torneo.model.php';
+require_once 'models/category.model.php';
 require_once 'views/admin.view.php';
 require_once 'views/spokon.view.php';
 
 class AdminController{
 
-    private $model;
+    private $modelItem;
+    private $modelCategory;
     private $view;
     private $viewSpokon;
 
     public function __construct(){
 
-        $this->model = new TorneoModel();
-        $categories = $this->model->getCategoryList();
+        $this->modelItem = new TorneoModel();
+        $this->modelCategory = new CategoryModel ();
+        $categories = $this->modelCategory->getCategoryList();
         $this->view = new AdminView();
         $this->viewSpokon = new SpokonView($categories);
     }
@@ -21,8 +24,8 @@ class AdminController{
 
     public function showAdminPage(){
 
-        $itemList = $this->model->getItemList();
-        $categories = $this->model->getCategoryList();
+        $itemList = $this->modelItem->getItemList();
+        $categories = $this->modelCategory->getCategoryList();
 
         $this->view->adminPage($itemList, $categories);
     }
@@ -34,7 +37,7 @@ class AdminController{
             $this->viewSpokon->showError("Faltan datos obligatorios");
             die();
         }
-        $this->model->insert($newSport);
+        $this->modelCategory->insert($newSport);
 
         header('Location: ' . BASE_URL . "adminPage");
     }
@@ -52,7 +55,7 @@ class AdminController{
             die();
         }
 
-        $this->model->addItem($tournament, $idSportFK, $country, $description, $img);
+        $this->modelItem->addItem($tournament, $idSportFK, $country, $description, $img);
 
         header('Location: ' . BASE_URL . "adminPage");
     }
@@ -75,7 +78,7 @@ class AdminController{
 
     public function deleteItem($idItem)
     {
-        $success = $this->model->deleteItem($idItem);
+        $success = $this->modelItem->deleteItem($idItem);
 
         header('Location: ' . BASE_URL . "adminPage");
     }
@@ -83,8 +86,8 @@ class AdminController{
     public function editView($idItem){
 
 
-        $infoItem = $this->model->getItemInfo($idItem);
-        $categories = $this->model->getCategoryList();
+        $infoItem = $this->modelItem->getItemInfo($idItem);
+        $categories = $this->modelCategory->getCategoryList();
         
         $this->view->editView($infoItem, $categories);
 
@@ -104,7 +107,7 @@ class AdminController{
             die();
         }
 
-        $this->model->editItem($idItem, $tournament, $idSportFK, $country, $description, $img);
+        $this->modelItem->editItem($idItem, $tournament, $idSportFK, $country, $description, $img);
 
         header('Location: ' . BASE_URL . "adminPage");
     }

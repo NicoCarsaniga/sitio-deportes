@@ -41,45 +41,11 @@ class TorneoModel
         return $torneo;
     }
 
-    public function getCategoryList()
-    {
-        $db = $this->createConection();
-
-        $sentencia = $db->prepare("SELECT * FROM deportes");
-        $sentencia->execute();
-        $sports = $sentencia->fetchAll(PDO::FETCH_OBJ);
-
-
-        return $sports;
-    }
-
-    public function insert($newSport)
-    {
-
-        $db = $this->createConection();
-
-        $sentencia = $db->prepare("INSERT INTO deportes(deporte) VALUES(?)");
-        $sentencia->execute([$newSport]);
-    }
-
-    public function getCategoryById($id_torneo)
-    {
-        $db = $this->createConection();
-        //2-Envío la consulta (3 pasos)
-        $sentencia = $db->prepare("SELECT * FROM deportes WHERE id_deporte=?");
-        $sentencia->execute([$id_torneo]);
-        $torneo = $sentencia->fetch(PDO::FETCH_OBJ);
-
-        return $torneo;
-    }
-
     public function addItem($tournament, $idSportFK, $country, $description, $img)
     {
         $db = $this->createConection();
         $sentencia = $db->prepare("INSERT INTO torneos(torneo, id_deporte_fk, pais, descripcion, imagen) VALUES(?, ?, ?, ?, ?)");
         $sentencia->execute([$tournament, $idSportFK, $country, $description, $img]);
-        //var_dump($sentencia->errorInfo()); 
-        //die();
     }
 
     public function getItemInfo($id_torneo)
