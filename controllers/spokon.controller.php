@@ -1,5 +1,6 @@
 <?php
 
+require_once 'models/category.model.php';
 require_once 'models/torneo.model.php';
 require_once 'views/spokon.view.php';
 

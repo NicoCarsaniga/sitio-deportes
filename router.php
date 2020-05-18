@@ -69,7 +69,15 @@ switch ($parametros[0]) {
         $controller = new AdminController();
         $controller->confirmEdition();
         break;
+    
+    case 'editViewCategory':
+        $controller = new AdminController();
+        $controller->editViewCategory($parametros[1]);
+        break;
 
+    case 'editCat':
+        $controller = new AdminController();
+        $controller->confirmEditCat();
     default:
         $controller = new SpokonController();
         $controller->showError("404 not found");

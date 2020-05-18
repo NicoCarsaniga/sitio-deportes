@@ -8,8 +8,8 @@
             {foreach $categories item=category}
                 <tr>
                 <td>{$category->deporte}</td>
+                    <td><a href="editViewCategory/{$category->id_deporte}" class="btn btn-warning"><i class="fas fa-edit"></i></a></td>
                     <td><button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></td>
-                    <td><button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button></td>
                 </tr>
             {/foreach}
             </tbody>

@@ -17,7 +17,7 @@ class AdminController{
         $this->modelItem = new TorneoModel();
         $this->modelCategory = new CategoryModel ();
         $categories = $this->modelCategory->getCategoryList();
-        $this->view = new AdminView();
+        $this->view = new AdminView($categories);
         $this->viewSpokon = new SpokonView($categories);
     }
 
@@ -111,4 +111,24 @@ class AdminController{
 
         header('Location: ' . BASE_URL . "adminPage");
     }
+    
+    public function editViewCategory($idCategory)
+    {
+        $infoCategory = $this->modelCategory->getCategoryById($idCategory);
+        $this->view->editCategoryView($infoCategory);
+    }
+
+    public function confirmEditCat()
+    {
+        $idCategory = $_POST['idCategory'];
+        $sport = $_POST['sport'];
+        if(empty($sport)){
+            $this->viewSpokon->showError("Faltan datos obligatorios");
+            die();
+        }
+        $this->modelCategory->editCategory($idCategory, $sport);
+
+        header('Location: ' . BASE_URL . "adminPage");
+    }
+
 }

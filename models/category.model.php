@@ -49,4 +49,12 @@ class CategoryModel
         return $deporte;
     }
 
+    public function editCategory($idCategory, $sport)
+    {
+        $db = $this->createConection();
+
+        $sentencia = $db->prepare("UPDATE deportes SET deporte=? WHERE id_deporte=?");
+        $sentencia->execute([$sport, $idCategory]);   
+    }
+
 }
