@@ -1,7 +1,9 @@
 {include 'headerAdmin.tpl'}
-{include 'formByCategory.tpl'}
-{include 'addItem.tpl'}
 
+    <div class="container d-flex flex-wrap align-content-start">
+        {include 'formByCategory.tpl'}
+        {include 'addItem.tpl'}
+    </div>
     <div class="row">
     <div class="col-md-6">
         <table class="table">
