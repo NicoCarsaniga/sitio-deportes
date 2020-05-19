@@ -13,9 +13,10 @@ class AdminView{
      $this->smarty->assign('categories',$categories);
     }
 
-    public function adminPage($itemList)
+    public function adminPage($itemList, $categories)
     {
         $this->smarty->assign('items', $itemList);
+        $this->smarty->assign('categories',$categories);
 
         $this->smarty->display('adminPage.tpl');
     }

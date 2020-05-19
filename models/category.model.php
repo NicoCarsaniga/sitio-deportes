@@ -57,4 +57,12 @@ class CategoryModel
         $sentencia->execute([$sport, $idCategory]);   
     }
 
+    public function deleteCategory($idCategory){
+
+        $db = $this->createConection();
+
+        $sentencia=$db->prepare("DELETE FROM deportes WHERE id_deporte=?");
+        $sentencia->execute([$idCategory]);
+    }
+
 }

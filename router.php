@@ -78,6 +78,13 @@ switch ($parametros[0]) {
     case 'editCat':
         $controller = new AdminController();
         $controller->confirmEditCat();
+        break;
+
+    case 'deleteSport':
+        $controller = new AdminController();
+        $controller->deleteCategory($parametros[1]);
+        break;
+
     default:
         $controller = new SpokonController();
         $controller->showError("404 not found");

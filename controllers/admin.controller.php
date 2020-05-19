@@ -131,4 +131,11 @@ class AdminController{
         header('Location: ' . BASE_URL . "adminPage");
     }
 
+    public function deleteCategory($idCategory){
+
+        $this->modelCategory->deleteCategory($idCategory);
+
+        header('Location: ' . BASE_URL . "adminPage");
+    }
+
 }
