@@ -25,9 +25,8 @@ class AdminController{
     public function showAdminPage(){
 
         $itemList = $this->modelItem->getItemList();
-        $categories = $this->modelCategory->getCategoryList();
 
-        $this->view->adminPage($itemList, $categories);
+        $this->view->adminPage($itemList);
     }
 
     public function addCategory()
@@ -133,7 +132,15 @@ class AdminController{
 
     public function deleteCategory($idCategory){
 
-        $this->modelCategory->deleteCategory($idCategory);
+        $itemList = $this->modelItem->getItemListById($idCategory);
+
+        if(!empty($itemList)){
+            $this->viewSpokon->showError("Elmine los torneos asociados a este deporte");
+            die();
+        }
+        else{
+            $this->modelCategory->deleteCategory($idCategory);
+        }
 
         header('Location: ' . BASE_URL . "adminPage");
     }

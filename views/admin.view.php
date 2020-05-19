@@ -5,7 +5,6 @@ require_once('libs/Smarty.class.php');
 class AdminView{
 
     private $smarty;
-    private $categories;
 
     public function __construct($categories)
     {
@@ -13,10 +12,9 @@ class AdminView{
      $this->smarty->assign('categories',$categories);
     }
 
-    public function adminPage($itemList, $categories)
+    public function adminPage($itemList)
     {
         $this->smarty->assign('items', $itemList);
-        $this->smarty->assign('categories',$categories);
 
         $this->smarty->display('adminPage.tpl');
     }
