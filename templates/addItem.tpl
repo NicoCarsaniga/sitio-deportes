@@ -22,6 +22,6 @@
         <input name="img" type="text" class="form-control" placeholder="Imagen">
     </div>
     <div class="col-6 mt-4">
-        <button type="submit" class="btn btn-success"><i class="far fa-share-square"></i></button>
+        <button type="submit" class="btn btn-success rounded-circle"><i class="far fa-share-square"></i></button>
     </div>
 </form>

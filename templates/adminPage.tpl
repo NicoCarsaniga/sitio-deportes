@@ -6,10 +6,10 @@
     </div>
     <div class="row">
     <div class="col-md-6">
-        <table class="table">
+        <table class="table bg-light">
             {foreach $categories item=category}
                 <tr>
-                <td>{$category->deporte}</td>
+                    <td>{$category->deporte}</td>
                     <td><a href="editViewCategory/{$category->id_deporte}" class="btn btn-warning"><i class="fas fa-edit"></i></a></td>
                     <td><a href="deleteSport/{$category->id_deporte}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></td>
                 </tr>
@@ -18,7 +18,7 @@
         </table>
         </div>
         <div class="col-md-6">
-            <table class="table">
+            <table class="table bg-light">
                 <tbody>
                 {foreach $items item=tournament}
                     <tr>

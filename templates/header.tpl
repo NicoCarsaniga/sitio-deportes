@@ -20,21 +20,26 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mr-auto">
-                    {foreach $categories item=category}
-                        <li class="nav-item active">
-                            <a class="nav-link" href="tournament/{$category->id_deporte}">{$category->deporte}</a>
-                        </li>
-                    {/foreach}
-                        <li class="nav-item active text-right">
-                            <a class="nav-link font-weight-bold" href="adminPage">Administrador</a>
-                        </li>
+                <ul class="nav nav-pills">
+                    <a class="nav-link dropdown-toggle text-white" id="navbardrop" data-toggle="dropdown" href="#">Deportes</a>
+                    <div class="dropdown-menu">
+                        {foreach $categories item=category}
+                            <li class="nav-item dropdown">
+                                <a class="dropdown-item" href="tournament/{$category->id_deporte}">{$category->deporte}</a>
+                            </li>
+                        {/foreach}
+                    </div>
                 </ul>
             </div>
+            <form class="form-inline" action="adminPage">
+                <input class="form-control mr-sm-1" type="text" placeholder="e-mail">
+                <input class="form-control mr-sm-1" type="text" placeholder="password">
+                <button class="btn btn-info" type="submit">Ingresar</button>
+            </form>
         </nav>
         <div class="text-center container">
-            <h1 class="text-light"> Bienvenidos a SPOKON</h1>
-            <h3 class="text-light"> Tu sitio para disfrutar de tus deportes favoritos </h3>
+            <h1> Bienvenidos a SPOKON</h1>
+            <h3> Tu sitio para disfrutar de tus deportes favoritos </h3>
         </div>
         <div class="container-fluid">
         

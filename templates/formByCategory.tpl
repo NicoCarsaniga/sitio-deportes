@@ -2,7 +2,7 @@
 
 
         <form class="col-6" action="addCategory" method="post">
-            <h3>Agregar categoría: Deporte</h3>
+            <h3>Agregar Deporte</h3>
             <div class="form-row">
                 <div class="col">
                     <input name="newSport" type="text" class="form-control" placeholder="Deporte">
