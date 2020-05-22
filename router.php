@@ -45,14 +45,9 @@ switch ($parametros[0]) {
         $controller->addItem();
         break;
 
-    case 'loginAdmin':
-        $controller = new AdminController();
-        $controller->loginAdmin();
-        break;
-
     case 'verify':
-        $controller = new AdminController();
-        $controller->verifyAdmin();
+        $controller = new AuthController();
+        $controller->verify();
         break;
 
     case 'delete':
