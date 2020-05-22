@@ -33,7 +33,7 @@
             </div>
             <form class="form-inline" action="verify" method="POST">
                 <input class="form-control mr-sm-1" type="text" name="user" placeholder="e-mail">
-                <input class="form-control mr-sm-1" type="text" name="password" placeholder="password">
+                <input class="form-control mr-sm-1" type="password" name="password" placeholder="password">
                 <button class="btn btn-info" type="submit">Ingresar</button>
             </form>
         </nav>

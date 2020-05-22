@@ -17,12 +17,12 @@ class UsersModel{
         return $pdo;
     }
 
-    public function getUsers($user, $password){
+    public function getUser($user){
 
         $db = $this->createConection();
 
-        $sentencia = $db->prepare("SELECT * FROM usuarios WHERE mail = ?, contrasenia=?");
-        $sentencia->execute([$user, $password]);
+        $sentencia = $db->prepare("SELECT * FROM usuarios WHERE email = ?");
+        $sentencia->execute([$user]);
         return $sentencia->fetch(PDO::FETCH_OBJ);
         
     }

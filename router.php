@@ -2,6 +2,7 @@
 
 require_once 'controllers/spokon.controller.php';
 require_once 'controllers/admin.controller.php';
+require_once 'controllers/auth.controller.php';
 
 //defino la base de la url de forma dinámica
 define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
