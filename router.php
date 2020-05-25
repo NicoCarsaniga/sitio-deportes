@@ -81,6 +81,11 @@ switch ($parametros[0]) {
         $controller->deleteCategory($parametros[1]);
         break;
 
+    case "logout": 
+        $controller = new AuthController();
+        $controller->logout();
+        break;
+
     default:
         $controller = new SpokonController();
         $controller->showError("404 not found");

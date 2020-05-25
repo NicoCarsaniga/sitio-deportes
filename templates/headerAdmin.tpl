@@ -30,6 +30,7 @@
                         {/foreach}
                     </div>
                 </ul>
+                    <a href="logout" type="button" class="btn btn-danger justify-content-end">Cerrar sesión</a>
             </div>
     </nav>
     

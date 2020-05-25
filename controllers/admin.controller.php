@@ -19,8 +19,19 @@ class AdminController{
         $categories = $this->modelCategory->getCategoryList();
         $this->view = new AdminView($categories);
         $this->viewSpokon = new SpokonView($categories);
+        $this->checkLogged();
+        
     }
 
+    private function checkLogged() {
+        session_start(); 
+
+        if (!isset($_SESSION['LOGGED'])) {
+            header('Location: ' . BASE_URL . 'index');
+            die();
+        }
+
+    }
 
     public function showAdminPage(){
 

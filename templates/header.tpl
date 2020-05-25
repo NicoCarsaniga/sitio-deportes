@@ -31,11 +31,11 @@
                     </div>
                 </ul>
             </div>
-            <form class="form-inline" action="verify" method="POST">
-                <input class="form-control mr-sm-1" type="text" name="user" placeholder="e-mail">
-                <input class="form-control mr-sm-1" type="password" name="password" placeholder="password">
-                <button class="btn btn-info" type="submit">Ingresar</button>
-            </form>
+                <form class="form-inline" action="verify" method="POST">
+                    <input class="form-control mr-sm-1" type="text" name="user" placeholder="e-mail">
+                    <input class="form-control mr-sm-1" type="password" name="password" placeholder="password">
+                    <button class="btn btn-info" type="submit">Ingresar</button>
+                </form>
         </nav>
         <div class="text-center container">
             <h1> Bienvenidos a SPOKON</h1>
