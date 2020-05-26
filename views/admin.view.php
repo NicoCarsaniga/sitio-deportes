@@ -1,15 +1,18 @@
 <?php
 
 require_once('libs/Smarty.class.php');
-
-class AdminView{
+require_once 'helpers/auth.helper.php';
+class AdminView
+{
 
     private $smarty;
 
     public function __construct($categories)
     {
-     $this->smarty = new Smarty();   
-     $this->smarty->assign('categories',$categories);
+        $this->smarty = new Smarty();
+        $this->smarty->assign('categories', $categories);
+        AuthHelper::checkLogged();
+        $this->smarty->assign('isLogged', $_SESSION["LOGGED"]);
     }
 
     public function adminPage($itemList)
@@ -24,7 +27,8 @@ class AdminView{
         $this->smarty->display('loginAdmin.tpl');
     }
 
-    public function editView($infoItem){
+    public function editView($infoItem)
+    {
 
         $this->smarty->assign('infoItem', $infoItem);
 

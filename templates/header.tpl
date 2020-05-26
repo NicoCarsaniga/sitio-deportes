@@ -31,14 +31,18 @@
                     </li>
                 </ul>
             </div>
-            <form class="form-inline" action="verify" method="POST">
-                <input class="form-control mr-sm-1" type="text" name="user" placeholder="e-mail">
-                <input class="form-control mr-sm-1" type="password" name="password" placeholder="password">
-                <button class="btn btn-info" type="submit">Ingresar</button>
-            </form>
-            <div>
-                <a href="logout" type="button" class="btn btn-danger">Cerrar sesión</a>
-            </div>
+            {if !$isLogged}
+                <form class="form-inline" action="verify" method="POST">
+                    <input class="form-control mr-sm-1" type="text" name="user" placeholder="e-mail">
+                    <input class="form-control mr-sm-1" type="password" name="password" placeholder="password">
+                    <button class="btn btn-info" type="submit">Ingresar</button>
+                </form>
+            {else}
+                <div>
+                    <a href="adminPage" type="button" class="btn btn-warning">{$USER}</a>
+                    <a href="logout" type="button" class="btn btn-danger">Cerrar sesión</a>
+                </div>
+            {/if}
         </nav>
         <div class="text-center container">
             <h1> Bienvenidos a SPOKON</h1>

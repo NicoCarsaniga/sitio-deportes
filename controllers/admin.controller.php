@@ -4,36 +4,37 @@ require_once 'models/torneo.model.php';
 require_once 'models/category.model.php';
 require_once 'views/admin.view.php';
 require_once 'views/spokon.view.php';
-
-class AdminController{
+require_once 'helpers/auth.helper.php';
+class AdminController
+{
 
     private $modelItem;
     private $modelCategory;
     private $view;
     private $viewSpokon;
 
-    public function __construct(){
+    public function __construct()
+    {
 
         $this->modelItem = new TorneoModel();
-        $this->modelCategory = new CategoryModel ();
+        $this->modelCategory = new CategoryModel();
         $categories = $this->modelCategory->getCategoryList();
         $this->view = new AdminView($categories);
         $this->viewSpokon = new SpokonView($categories);
-        $this->checkLogged();
-        
+        AuthHelper::checkLogged();
+        $this->notLogged();
     }
 
-    private function checkLogged() {
-        session_start(); 
-
+    private function notLogged()
+    {
         if (!isset($_SESSION['LOGGED'])) {
             header('Location: ' . BASE_URL . 'index');
             die();
         }
-
     }
 
-    public function showAdminPage(){
+    public function showAdminPage()
+    {
 
         $itemList = $this->modelItem->getItemList();
 
@@ -43,7 +44,7 @@ class AdminController{
     public function addCategory()
     {
         $newSport = $_POST['newSport'];
-        if(empty($newSport)){
+        if (empty($newSport)) {
             $this->viewSpokon->showError("Faltan datos obligatorios");
             die();
         }
@@ -60,7 +61,7 @@ class AdminController{
         $description = $_POST['description'];
         $img = $_POST['img'];
 
-        if(empty($tournament | $idSportFK | $country | $description | $img)){
+        if (empty($tournament | $idSportFK | $country | $description | $img)) {
             $this->viewSpokon->showError("Faltan datos obligatorios");
             die();
         }
@@ -77,17 +78,18 @@ class AdminController{
         header('Location: ' . BASE_URL . "adminPage");
     }
 
-    public function editView($idItem){
+    public function editView($idItem)
+    {
 
 
         $infoItem = $this->modelItem->getItemInfo($idItem);
         $categories = $this->modelCategory->getCategoryList();
-        
-        $this->view->editView($infoItem, $categories);
 
+        $this->view->editView($infoItem, $categories);
     }
 
-    public function confirmEdition(){
+    public function confirmEdition()
+    {
 
         $idItem = $_POST['idItem'];
         $tournament = $_POST['tournament'];
@@ -96,7 +98,7 @@ class AdminController{
         $description = $_POST['description'];
         $img = $_POST['img'];
 
-        if(empty($tournament || $idSportFK || $country || $description || $img)){
+        if (empty($tournament || $idSportFK || $country || $description || $img)) {
             $this->viewSpokon->showError("Faltan datos obligatorios");
             die();
         }
@@ -105,7 +107,7 @@ class AdminController{
 
         header('Location: ' . BASE_URL . "adminPage");
     }
-    
+
     public function editViewCategory($idCategory)
     {
         $infoCategory = $this->modelCategory->getCategoryById($idCategory);
@@ -116,7 +118,7 @@ class AdminController{
     {
         $idCategory = $_POST['idCategory'];
         $sport = $_POST['sport'];
-        if(empty($sport)){
+        if (empty($sport)) {
             $this->viewSpokon->showError("Faltan datos obligatorios");
             die();
         }
@@ -125,19 +127,18 @@ class AdminController{
         header('Location: ' . BASE_URL . "adminPage");
     }
 
-    public function deleteCategory($idCategory){
+    public function deleteCategory($idCategory)
+    {
 
         $itemList = $this->modelItem->getItemListById($idCategory);
 
-        if(!empty($itemList)){
+        if (!empty($itemList)) {
             $this->viewSpokon->showError("Elmine los torneos asociados a este deporte");
             die();
-        }
-        else{
+        } else {
             $this->modelCategory->deleteCategory($idCategory);
         }
 
         header('Location: ' . BASE_URL . "adminPage");
     }
-
 }
