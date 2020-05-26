@@ -21,21 +21,24 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="nav nav-pills">
-                    <a class="nav-link dropdown-toggle text-white" id="navbardrop" data-toggle="dropdown" href="#">Deportes</a>
-                    <div class="dropdown-menu">
-                        {foreach $categories item=category}
-                            <li class="nav-item dropdown">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" id="navbardrop" data-toggle="dropdown" href="#">Deportes</a>
+                        <div class="dropdown-menu bg-success">
+                            {foreach $categories item=category}
                                 <a class="dropdown-item" href="tournament/{$category->id_deporte}">{$category->deporte}</a>
-                            </li>
-                        {/foreach}
-                    </div>
+                            {/foreach}
+                        </div>
+                    </li>
                 </ul>
             </div>
-                <form class="form-inline" action="verify" method="POST">
-                    <input class="form-control mr-sm-1" type="text" name="user" placeholder="e-mail">
-                    <input class="form-control mr-sm-1" type="password" name="password" placeholder="password">
-                    <button class="btn btn-info" type="submit">Ingresar</button>
-                </form>
+            <form class="form-inline" action="verify" method="POST">
+                <input class="form-control mr-sm-1" type="text" name="user" placeholder="e-mail">
+                <input class="form-control mr-sm-1" type="password" name="password" placeholder="password">
+                <button class="btn btn-info" type="submit">Ingresar</button>
+            </form>
+            <div>
+                <a href="logout" type="button" class="btn btn-danger">Cerrar sesión</a>
+            </div>
         </nav>
         <div class="text-center container">
             <h1> Bienvenidos a SPOKON</h1>

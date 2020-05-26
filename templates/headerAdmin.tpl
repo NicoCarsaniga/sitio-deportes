@@ -21,16 +21,18 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="nav nav-pills">
-                    <a class="nav-link dropdown-toggle text-white" id="navbardrop" data-toggle="dropdown" href="#">Deportes</a>
-                    <div class="dropdown-menu">
-                        {foreach $categories item=category}
-                            <li class="nav-item dropdown">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" id="navbardrop" data-toggle="dropdown" href="#">Deportes</a>
+                        <div class="dropdown-menu bg-success">
+                            {foreach $categories item=category}
                                 <a class="dropdown-item" href="tournament/{$category->id_deporte}">{$category->deporte}</a>
-                            </li>
-                        {/foreach}
-                    </div>
+                            {/foreach}
+                        </div>
+                    </li>
                 </ul>
-                    <a href="logout" type="button" class="btn btn-danger justify-content-end">Cerrar sesión</a>
+                <div>
+                    <a href="logout" type="button" class="btn btn-danger">Cerrar sesión</a>
+                </div>
             </div>
     </nav>
     
