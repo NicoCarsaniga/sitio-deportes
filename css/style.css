@@ -2,3 +2,10 @@ body {
     margin: 0px;
     background-image: url("../img/fondo4.jpg");
 }
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+
+}

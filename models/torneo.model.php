@@ -23,7 +23,7 @@ class TorneoModel
     {
         $db = $this->createConection();
         //2-Envío la consulta (3 pasos)
-        $sentencia = $db->prepare("SELECT * FROM torneos ORDER BY torneo ASC");
+        $sentencia = $db->prepare("SELECT * FROM torneos ORDER BY votos DESC");
         $sentencia->execute();
         $torneos = $sentencia->fetchAll(PDO::FETCH_OBJ);
 

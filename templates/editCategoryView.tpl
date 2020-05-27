@@ -9,3 +9,4 @@
         </div>
     </form>
 </div>
+{include 'footer.tpl'}
