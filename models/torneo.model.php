@@ -19,6 +19,7 @@ class TorneoModel
         return $pdo;
     }
 
+    //trae de la db lista de items ordenada por nombre ascendente
     public function getItemList()
     {
         $db = $this->createConection();
@@ -30,6 +31,7 @@ class TorneoModel
         return $torneos;
     }
 
+    //obtiene toda la info de las tablas de items y categorias segun id_cat
     public function getItemListById($id_deporte)
     {
         $db = $this->createConection();
@@ -41,13 +43,14 @@ class TorneoModel
         return $torneo;
     }
 
+    //agrega item en db
     public function addItem($tournament, $idSportFK, $country, $description, $img)
     {
         $db = $this->createConection();
         $sentencia = $db->prepare("INSERT INTO torneos(torneo, id_deporte_fk, pais, descripcion, imagen) VALUES(?, ?, ?, ?, ?)");
         $sentencia->execute([$tournament, $idSportFK, $country, $description, $img]);
     }
-
+    //obtiene toda la info de las tablas de items y categorias segun id_cat
     public function getItemInfo($id_torneo)
     {
         $db = $this->createConection();
@@ -57,14 +60,14 @@ class TorneoModel
 
         return $infoTorneo;
     }
-
+    //borrado de item
     public function deleteItem($idItem)
     {
         $db = $this->createConection();
         $sentencia = $db->prepare("DELETE FROM torneos WHERE id_torneo=?");
         $sentencia->execute([$idItem]);
     }
-
+    //edicion de item
     public function editItem($idItem, $tournament, $idSportFK, $country, $description, $img)
     {
 

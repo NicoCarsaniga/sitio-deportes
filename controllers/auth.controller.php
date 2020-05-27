@@ -13,6 +13,7 @@ class AuthController
     }
 
 
+    //realiza la verificacion del usuario admin y redirige a la pag de admin
     public function verify()
     {
         $user = $_POST['user'];
@@ -21,20 +22,17 @@ class AuthController
         $userdb = $this->model->getUser($user);
 
         if ($userdb && password_verify($password, $userdb->contrasenia)) {
-            session_start();
-            $_SESSION['ID_USER'] = $userdb->id_usuario;
-            $_SESSION['USER'] = $userdb->email;
-            $_SESSION['LOGGED'] = true;
+            AuthHelper::verify($userdb);
             header('Location:' . BASE_URL . 'adminPage');
         } else {
             header('Location:' . BASE_URL . 'error');
         }
     }
 
+    //destruye lasesion del usuario
     public function logout()
     {
-        session_start();
-        session_destroy();
+        AuthHelper::logout();
         header("Location: " . BASE_URL . 'index');
     }
 }
