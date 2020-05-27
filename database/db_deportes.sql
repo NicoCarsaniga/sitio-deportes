@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-05-2020 a las 16:26:27
--- Versión del servidor: 10.4.8-MariaDB
--- Versión de PHP: 7.3.10
+-- Tiempo de generación: 27-05-2020 a las 18:01:47
+-- Versión del servidor: 10.4.6-MariaDB
+-- Versión de PHP: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -72,11 +72,11 @@ INSERT INTO `torneos` (`id_torneo`, `torneo`, `id_deporte_fk`, `pais`, `descripc
 (3, 'LaLiga', 1, 'España', 'Liga Española.\r\nCampeonato Nacional de Liga de Primera División de España. Los méjores haciendo gala de su buen fútbol.', 'la_liga.png', 20),
 (4, 'Liga Nacional', 2, 'Argentina', 'La Liga Nacional de Básquet es la máxima división del básquet argentino.', '', 8),
 (5, 'Liga ACB', 2, 'España', 'La Liga ACB  es la principal liga de baloncesto profesional de España. Está regida por la Asociación de Clubes de Baloncesto (ACB) .', '', 11),
-(6, 'NBA', 2, 'Estado Unidos', 'La National Basketball Association, más conocida simplemente por sus siglas NBA, es una liga privada de baloncesto profesional que se disputa en Estados Unidos desde 1946', '', 20),
+(6, 'NBA', 2, 'Estado Unidos', 'La National Basketball Association, más conocida simplemente por sus siglas NBA, es una liga privada de baloncesto profesional que se disputa en Estados Unidos desde 1946', 'logoNBA.png', 20),
 (7, 'Torneo Argentino', 3, 'Argentina', 'Torneo Argentino de Rugby. Los miembros de la UAR compiten por el máximo trofeo de Argentina.', '', 9),
 (8, 'Gallagher Premiership', 3, 'Reino Unido', 'La Liga de Inglaterra de Rugby.  En este campeonato se enfrentan los doce mejores equipos de Inglaterra.', '', 5),
 (9, 'TOP 14', 3, 'Francia', 'El Rugby Top 14 es un campeonato masculino de clubes de rugby de Francia que se disputa desde 1892. Es supuestamente la mejor liga de rugby del mundo de clubes, ? y atrae a los mejores jugadores del planeta.', '', 11),
-(11, 'Fórmula 1', 4, 'Mundial', 'Máxima competición automovilística del planeta. La tecnología de punta y los mejores pilotos reunidos para dar un show alucinante.', '', 20),
+(11, 'Fórmula 1', 4, 'Mundial', 'Máxima competición automovilística del planeta. La tecnología de punta y los mejores pilotos reunidos para dar un show alucinante.', 'formula1.png', 20),
 (12, 'Turismo Carretera', 4, 'Argentina', 'Máxima competición del automovilismo argentino.', '', 3),
 (13, 'TC 2000', 4, 'Argentina', 'Es la versión modernizada del TC, con automóviles más modernos y adaptados que en el TC.', '', 1),
 (14, 'Liga de Vóleibol de Argentina', 5, 'Argentina', 'La Liga de Voleibol Argentina es la máxima categoría del vóleibol argentino. Es organizada por la ACLAV desde 2003.', '', 4),
@@ -142,7 +142,7 @@ ALTER TABLE `deportes`
 -- AUTO_INCREMENT de la tabla `torneos`
 --
 ALTER TABLE `torneos`
-  MODIFY `id_torneo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_torneo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`

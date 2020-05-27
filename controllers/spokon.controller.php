@@ -22,8 +22,9 @@ class SpokonController
     {
         //data para el main
         $itemList = $this->modelItem->getItemList();
+        $top3 = $this->modelItem->getItemListByVotos();
 
-        $this->view->showMainView($itemList);
+        $this->view->showMainView($itemList, $top3);
     }
     //muestra lista de item
     public function showTournament($id_torneo)

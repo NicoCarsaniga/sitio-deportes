@@ -13,7 +13,7 @@
         <title>Spokon | TV </title>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-success mb-3">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-success">
             <a class="navbar-brand font-weight-bold" href="">
             <img src="img\simbolo.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">Spokon.tv</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,8 +22,8 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="nav nav-pills">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" id="navbardrop" data-toggle="dropdown" href="#">Deportes</a>
-                        <div class="dropdown-menu bg-success">
+                        <a class="nav-link dropdown-toggle text-white" id="navbardrop" data-toggle="dropdown" href="#"><b>Deportes</b></a>
+                        <div class="dropdown-menu bg-info">
                             {foreach $categories item=category}
                                 <a class="dropdown-item" href="tournament/{$category->id_deporte}">{$category->deporte}</a>
                             {/foreach}
@@ -44,7 +44,7 @@
                 </div>
             {/if}
         </nav>
-        <div class="text-center container">
+        <div class="text-center bg-secondary pt-3 pb-3 mb-3">
             <h1> Bienvenidos a SPOKON</h1>
             <h3> Tu sitio para disfrutar de tus deportes favoritos </h3>
         </div>
