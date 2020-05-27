@@ -11,15 +11,8 @@ class SpokonView
     {
         $this->smarty = new Smarty();
         $this->smarty->assign('categories', $categories);
-        AuthHelper::checkLogged();
-        if (isset($_SESSION["LOGGED"])) {
-            $this->smarty->assign('isLogged', $_SESSION["LOGGED"]);
-        } else {
-            $this->smarty->assign('isLogged', false);
-        }
-        if(isset($_SESSION["USER"])){
-        $this->smarty->assign('USER', $_SESSION["USER"]);
-        }
+        $this->smarty->assign('isLogged',  AuthHelper::isLogged());
+        $this->smarty->assign('USER', AuthHelper::user());
     }
 
     public function showItemList($itemList)
@@ -44,7 +37,6 @@ class SpokonView
     public function showItem($infoTorneo)
     {
         $this->smarty->assign('infoTorneo', $infoTorneo);
-
         $this->smarty->display('showItem.tpl');
     }
 

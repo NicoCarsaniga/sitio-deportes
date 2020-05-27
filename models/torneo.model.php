@@ -26,7 +26,7 @@ class TorneoModel
         $sentencia = $db->prepare("SELECT * FROM torneos ORDER BY torneo ASC");
         $sentencia->execute();
         $torneos = $sentencia->fetchAll(PDO::FETCH_OBJ);
-     
+
         return $torneos;
     }
 
@@ -51,7 +51,7 @@ class TorneoModel
     public function getItemInfo($id_torneo)
     {
         $db = $this->createConection();
-        $sentencia = $db->prepare("SELECT * FROM torneos WHERE id_torneo=?");
+        $sentencia = $db->prepare("SELECT * FROM torneos INNER JOIN deportes ON torneos.id_deporte_fk = deportes.id_deporte WHERE id_torneo=?");
         $sentencia->execute([$id_torneo]);
         $infoTorneo = $sentencia->fetch(PDO::FETCH_OBJ);
 
@@ -65,12 +65,12 @@ class TorneoModel
         $sentencia->execute([$idItem]);
     }
 
-    public function editItem($idItem, $tournament, $idSportFK, $country, $description, $img){
+    public function editItem($idItem, $tournament, $idSportFK, $country, $description, $img)
+    {
 
-        $db= $this->createConection();
+        $db = $this->createConection();
 
         $sentencia = $db->prepare("UPDATE torneos SET torneo=?, id_deporte_fk=?, pais=?, descripcion=?, imagen=? WHERE id_torneo=?");
         $sentencia->execute([$tournament, $idSportFK, $country, $description, $img, $idItem]);
-
     }
 }

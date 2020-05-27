@@ -11,8 +11,7 @@ class AdminView
     {
         $this->smarty = new Smarty();
         $this->smarty->assign('categories', $categories);
-        AuthHelper::checkLogged();
-        $this->smarty->assign('isLogged', $_SESSION["LOGGED"]);
+        $this->smarty->assign('isLogged',  AuthHelper::isLogged());
     }
 
     public function adminPage($itemList)

@@ -35,13 +35,14 @@ class SpokonController
     }
 
     public function showItem($id_item)
-    { 
+    {
         $itemInfo = $this->modelItem->getItemInfo($id_item);
 
         $this->view->showItem($itemInfo);
     }
 
-    function showError($error) {
-        $this->view->showError($error); 
+    function showError($error)
+    {
+        $this->view->showError($error);
     }
 }

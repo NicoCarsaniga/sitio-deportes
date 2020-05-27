@@ -22,16 +22,8 @@ class AdminController
         $this->view = new AdminView($categories);
         $this->viewSpokon = new SpokonView($categories);
         AuthHelper::checkLogged();
-        $this->notLogged();
     }
 
-    private function notLogged()
-    {
-        if (!isset($_SESSION['LOGGED'])) {
-            header('Location: ' . BASE_URL . 'index');
-            die();
-        }
-    }
 
     public function showAdminPage()
     {
