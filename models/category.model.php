@@ -2,6 +2,7 @@
 
 class CategoryModel
 {
+    //funcion comun para crear la conexion
     private function  createConection()
     {
         $host = 'localhost';
@@ -16,7 +17,7 @@ class CategoryModel
         }
         return $pdo;
     }
-
+    //devuelve la lista de categorias
     public function getCategoryList()
     {
         $db = $this->createConection();
@@ -28,7 +29,7 @@ class CategoryModel
 
         return $sports;
     }
-
+    //inserta nueva categoria
     public function insert($newSport)
     {
 
@@ -37,7 +38,7 @@ class CategoryModel
         $sentencia = $db->prepare("INSERT INTO deportes(deporte) VALUES(?)");
         $sentencia->execute([$newSport]);
     }
-
+    //devuelve categoria por id
     public function getCategoryById($id_torneo)
     {
         $db = $this->createConection();
@@ -48,7 +49,7 @@ class CategoryModel
 
         return $deporte;
     }
-
+    //funcion para editar categorias
     public function editCategory($idCategory, $sport)
     {
         $db = $this->createConection();
@@ -56,7 +57,7 @@ class CategoryModel
         $sentencia = $db->prepare("UPDATE deportes SET deporte=? WHERE id_deporte=?");
         $sentencia->execute([$sport, $idCategory]);   
     }
-
+    //funcion para eliminar una categoria
     public function deleteCategory($idCategory){
 
         $db = $this->createConection();
