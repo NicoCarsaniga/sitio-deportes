@@ -31,6 +31,6 @@
             </table>
         </div>
     </div>
-
-
-{include 'footer.tpl'}
+</div>
+</body>
+</html>

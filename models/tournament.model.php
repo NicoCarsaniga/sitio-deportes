@@ -19,12 +19,23 @@ class TournamentModel
         return $pdo;
     }
 
-    //trae de la db lista de items ordenada por nombre ascendente
+    //trae de la db lista de items ordenada por votos descendente
     public function getItemList()
     {
         $db = $this->createConection();
         //2-Envío la consulta (3 pasos)
         $sentencia = $db->prepare("SELECT * FROM torneos ORDER BY votos DESC");
+        $sentencia->execute();
+        $torneos = $sentencia->fetchAll(PDO::FETCH_OBJ);
+
+        return $torneos;
+    }
+
+    public function getItemListByVotos()
+    {
+        $db = $this->createConection();
+        //2-Envío la consulta (3 pasos)
+        $sentencia = $db->prepare("SELECT * FROM torneos ORDER BY votos DESC LIMIT 3");
         $sentencia->execute();
         $torneos = $sentencia->fetchAll(PDO::FETCH_OBJ);
 
