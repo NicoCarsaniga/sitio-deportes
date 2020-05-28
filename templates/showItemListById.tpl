@@ -1,6 +1,4 @@
-{include 'header.tpl'}
-
-        
+{include 'header.tpl'}       
         <h4>{$tournamentById->deporte}</h4>
 
         <ul class="ul-itemList list-group">

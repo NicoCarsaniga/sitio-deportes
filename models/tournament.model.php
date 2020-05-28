@@ -1,6 +1,6 @@
 <?php
 
-class TorneoModel
+class TournamentModel
 {
 
     //creo la conexión 

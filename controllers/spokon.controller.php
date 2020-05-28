@@ -1,7 +1,7 @@
 <?php
 
 require_once 'models/category.model.php';
-require_once 'models/torneo.model.php';
+require_once 'models/tournament.model.php';
 require_once 'views/spokon.view.php';
 
 class SpokonController
@@ -12,7 +12,7 @@ class SpokonController
 
     public function __construct()
     {
-        $this->modelItem = new TorneoModel();
+        $this->modelItem = new TournamentModel();
         $this->modelCategory = new CategoryModel();
         $categories = $this->modelCategory->getCategoryList();
         $this->view = new SpokonView($categories);
