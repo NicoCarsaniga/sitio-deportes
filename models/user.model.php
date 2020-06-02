@@ -1,29 +1,15 @@
 <?php
 
-class UsersModel{
-
-    private function  createConection()
+require_once 'conection.model.php';
+class UsersModel extends ConectionModel
+{
+    public function getUser($user)
     {
-        $host = 'localhost';
-        $userName = 'root';
-        $password = '';
-        $database = 'db_deportes';
 
-        try {
-            $pdo = new PDO("mysql:host=$host;dbname=$database;charset=utf8", $userName, $password);
-        } catch (Exception $e) {
-            var_dump($e);
-        }
-        return $pdo;
-    }
-
-    public function getUser($user){
-
-        $db = $this->createConection();
+        $db = $this->getDb();
 
         $sentencia = $db->prepare("SELECT * FROM usuarios WHERE email = ?");
         $sentencia->execute([$user]);
         return $sentencia->fetch(PDO::FETCH_OBJ);
-        
     }
 }

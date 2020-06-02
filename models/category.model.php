@@ -1,26 +1,12 @@
 <?php
 
-class CategoryModel
+require_once 'conection.model.php';
+class CategoryModel extends ConectionModel
 {
-    //funcion comun para crear la conexion
-    private function  createConection()
-    {
-        $host = 'localhost';
-        $userName = 'root';
-        $password = '';
-        $database = 'db_deportes';
-
-        try {
-            $pdo = new PDO("mysql:host=$host;dbname=$database;charset=utf8", $userName, $password);
-        } catch (Exception $e) {
-            var_dump($e);
-        }
-        return $pdo;
-    }
     //devuelve la lista de categorias
     public function getCategoryList()
     {
-        $db = $this->createConection();
+        $db = $this->getDb();
 
         $sentencia = $db->prepare("SELECT * FROM deportes");
         $sentencia->execute();
@@ -33,7 +19,7 @@ class CategoryModel
     public function insert($newSport)
     {
 
-        $db = $this->createConection();
+        $db = $this->getDb();
 
         $sentencia = $db->prepare("INSERT INTO deportes(deporte) VALUES(?)");
         $sentencia->execute([$newSport]);
@@ -41,7 +27,7 @@ class CategoryModel
     //devuelve categoria por id
     public function getCategoryById($id_torneo)
     {
-        $db = $this->createConection();
+        $db = $this->getDb();
         //2-Envío la consulta (3 pasos)
         $sentencia = $db->prepare("SELECT * FROM deportes WHERE id_deporte=?");
         $sentencia->execute([$id_torneo]);
@@ -52,18 +38,18 @@ class CategoryModel
     //funcion para editar categorias
     public function editCategory($idCategory, $sport)
     {
-        $db = $this->createConection();
+        $db = $this->getDb();
 
         $sentencia = $db->prepare("UPDATE deportes SET deporte=? WHERE id_deporte=?");
-        $sentencia->execute([$sport, $idCategory]);   
+        $sentencia->execute([$sport, $idCategory]);
     }
     //funcion para eliminar una categoria
-    public function deleteCategory($idCategory){
+    public function deleteCategory($idCategory)
+    {
 
-        $db = $this->createConection();
+        $db = $this->getD();
 
-        $sentencia=$db->prepare("DELETE FROM deportes WHERE id_deporte=?");
+        $sentencia = $db->prepare("DELETE FROM deportes WHERE id_deporte=?");
         $sentencia->execute([$idCategory]);
     }
-
 }

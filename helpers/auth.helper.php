@@ -42,7 +42,7 @@ class AuthHelper
     }
 
     //asigna los valores de sesion id, email y el estado log
-    static public function verify($userdb)
+    static public function SetSessionData($userdb)
     {
         self::start();
         $_SESSION['ID_USER'] = $userdb->id_usuario;
