@@ -22,7 +22,7 @@ class AuthController
         $userdb = $this->model->getUser($user);
 
         if ($userdb && password_verify($password, $userdb->contrasenia)) {
-            AuthHelper::verify($userdb);
+            AuthHelper::SetSessionData($userdb);
             header('Location:' . BASE_URL . 'adminPage');
         } else {
             header('Location:' . BASE_URL . 'error');
