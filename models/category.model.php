@@ -8,7 +8,7 @@ class CategoryModel extends ConectionModel
     {
         $db = $this->getDb();
 
-        $sentencia = $db->prepare("SELECT * FROM deportes");
+        $sentencia = $db->prepare("SELECT * FROM deportes ORDER BY deporte ASC");
         $sentencia->execute();
         $sports = $sentencia->fetchAll(PDO::FETCH_OBJ);
 

@@ -8,7 +8,7 @@ class TournamentModel extends ConectionModel
     {
         $db = $this->getDb();
         //2-Envío la consulta (3 pasos)
-        $sentencia = $db->prepare("SELECT * FROM torneos ORDER BY votos DESC");
+        $sentencia = $db->prepare("SELECT * FROM torneos ORDER BY torneo ASC");
         $sentencia->execute();
         $torneos = $sentencia->fetchAll(PDO::FETCH_OBJ);
 

@@ -4,7 +4,6 @@ class ConectionModel
 {
     private $db;
 
-
     public function __construct()
     {
         $this->db = $this->createConection();

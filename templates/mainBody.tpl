@@ -6,7 +6,7 @@
             <table class="table table-info">
                 <thead >
                     <th>
-                        <h3><b>Estos son los torneos mas votados</b></h3>
+                        <h3><b>Estos son los torneos más votados</b></h3>
                     </th>
                 </thead>
             </table>
