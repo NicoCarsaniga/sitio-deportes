@@ -14,10 +14,24 @@ class CategoryApiController{
         $this->view = new APIView();
     }
 
+    //petición de categorias
     public function getCategories($params = []){
 
-        $category = $this->model->getCategoryList();
+        $categories = $this->model->getCategoryList();
 
-        $this->view->response($category, 200);
+        $this->view->response($categories, 200);
+    }
+
+    //peticion de categorias por id
+    public function getCategory($params = []){
+
+        $idCategory = $params[':ID'];
+        $category = $this->model->getCategoryById($idCategory);
+
+        if($category){
+            $this->view->response($category, 200);
+        }else{
+            $this->view->response("No existe la categoría con id {$idCategory}", 404);
+        }
     }
 }

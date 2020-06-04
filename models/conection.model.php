@@ -1,5 +1,5 @@
 <?php
-
+//clase padre para una conección común
 class ConectionModel
 {
     private $db;
@@ -9,12 +9,14 @@ class ConectionModel
         $this->db = $this->createConection();
     }
 
+    //funcion que devuelve la coneccion
     public function getDb()
     {
         return $this->db;
     }
+
     //funcion comun para crear la conexion
-    public function  createConection()
+    private function  createConection()
     {
         $host = 'localhost';
         $userName = 'root';
