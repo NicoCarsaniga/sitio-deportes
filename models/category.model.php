@@ -47,7 +47,7 @@ class CategoryModel extends ConectionModel
     public function deleteCategory($idCategory)
     {
 
-        $db = $this->getD();
+        $db = $this->getDb();
 
         $sentencia = $db->prepare("DELETE FROM deportes WHERE id_deporte=?");
         $sentencia->execute([$idCategory]);
