@@ -34,4 +34,22 @@ class CategoryApiController{
             $this->view->response("No existe la categoría con id {$idCategory}", 404);
         }
     }
+
+    // Elimina las categorias por ID
+
+    public function deleteCategory($params = []){
+        //Traigo el ID de la categoria a eliminar
+        $idCategory = $params[':ID'];
+        $category = $this->model->getCategoryById($idCategory);
+
+        //verifico que exista
+        if(empty($category)){
+            $this->view->response("No se encontro deporte con ID: {$idCategory}", 404);
+            die();
+        }else{
+            $this->model->deletecategory($idCategory);
+            $this->view->response("Se elimino correctamente el deporte con ID: {$idCategory}", 200);
+        }
+
+    }
 }
