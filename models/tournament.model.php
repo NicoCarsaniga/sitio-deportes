@@ -3,7 +3,9 @@
 require_once 'conection.model.php';
 class TournamentModel extends ConectionModel
 {
-    //trae de la db lista de items ordenada por votos descendente
+    /**
+    * Trae de la db lista de items ordenada por votos descendente
+    */
     public function getItemList()
     {
         $db = $this->getDb();
@@ -26,7 +28,9 @@ class TournamentModel extends ConectionModel
         return $torneos;
     }
 
-    //obtiene toda la info de las tablas de items y categorias segun id_cat
+    /**
+     * Obtiene toda la info de las tablas de items y categorias segun id_cat
+     */
     public function getItemListById($id_deporte)
     {
         $db = $this->getDb();
@@ -38,14 +42,20 @@ class TournamentModel extends ConectionModel
         return $torneo;
     }
 
-    //agrega item en db
-    public function addItem($tournament, $idSportFK, $country, $description, $img)
+    /**
+     * Agrega item en db
+     */
+    public function addItem($tournament, $idSportFK, $country, $description)
     {
         $db = $this->getDb();
-        $sentencia = $db->prepare("INSERT INTO torneos(torneo, id_deporte_fk, pais, descripcion, imagen) VALUES(?, ?, ?, ?, ?)");
-        $sentencia->execute([$tournament, $idSportFK, $country, $description, $img]);
+        $sentencia = $db->prepare("INSERT INTO torneos(torneo, id_deporte_fk, pais, descripcion) VALUES(?, ?, ?, ?)");
+        $sentencia->execute([$tournament, $idSportFK, $country, $description]);
+        return $db->lastInsertId();
     }
-    //obtiene toda la info de las tablas de items y categorias segun id_cat
+
+    /** 
+     * Obtiene toda la info de las tablas de items y categorias segun id_cat
+     */
     public function getItemInfo($id_torneo)
     {
         $db = $this->getDb();
@@ -55,20 +65,27 @@ class TournamentModel extends ConectionModel
 
         return $infoTorneo;
     }
-    //borrado de item
+
+    /**
+    * Borrado de item
+    */
     public function deleteItem($idItem)
     {
         $db = $this->getDb();
         $sentencia = $db->prepare("DELETE FROM torneos WHERE id_torneo=?");
         $sentencia->execute([$idItem]);
     }
-    //edicion de item
-    public function editItem($idItem, $tournament, $idSportFK, $country, $description, $img)
+
+    /**
+     * Edicion de item
+     */
+    public function editItem($idItem, $tournament, $idSportFK, $country, $description)
     {
 
         $db = $this->getDb();
 
-        $sentencia = $db->prepare("UPDATE torneos SET torneo=?, id_deporte_fk=?, pais=?, descripcion=?, imagen=? WHERE id_torneo=?");
-        $sentencia->execute([$tournament, $idSportFK, $country, $description, $img, $idItem]);
+        $sentencia = $db->prepare("UPDATE torneos SET torneo=?, id_deporte_fk=?, pais=?, descripcion=? WHERE id_torneo=?");
+        $sentencia->execute([$tournament, $idSportFK, $country, $description, $idItem]);
     }
+
 }

@@ -1,5 +1,5 @@
 
-<form class="col-6" action="addItem" method="post">
+<form class="col-6" action="addItem" method="post" enctype="multipart/form-data">
     <h3>Agregar Nuevo Torneo</h3>
     <div class="col-6">
         <input name="tournament" type="text" class="form-control" placeholder="Torneo">
@@ -19,9 +19,9 @@
         <input name="description" type="text" class="form-control" placeholder="Descripción">
     </div>
     <div class="col-6 mt-4">
-        <input name="img" type="text" class="form-control" placeholder="Imagen">
+        <input name="img" type="file" multiple="">
     </div>
     <div class="col-6 mt-4">
-        <button type="submit" class="btn btn-success rounded-circle"><i class="far fa-share-square"></i></button>
+        <button type="submit" class="btn btn-success"><i class="far fa-share-square"></i></button>
     </div>
 </form>
