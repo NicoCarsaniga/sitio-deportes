@@ -80,14 +80,12 @@ class AdminController
     {
         //traigo la ruta de la imagen
         $path = $this->modelImg->getImgPath($idItem);
-        var_dump($path);
-        die();
         //uso la ruta para eliminar la imagen 
-        unlink('../' . $path->ruta);
+        unlink($path->ruta);
 
         $success = $this->modelImg->deleteImg($idItem);
         $success = $this->modelItem->deleteItem($idItem);
-        //header('Location: ' . BASE_URL . "adminPage");
+        header('Location: ' . BASE_URL . "adminPage");
     }
 
     /**

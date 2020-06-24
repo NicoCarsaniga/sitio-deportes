@@ -52,7 +52,7 @@ class Images extends ConectionModel
         $db = $this->getDb();
         $sentencia = $db->prepare("SELECT * FROM imagenes WHERE id_torneo_fk = ?");
         $sentencia->execute([$itemId]);
-        $path = $sentencia->fetchAll(PDO::FETCH_OBJ);
+        $path = $sentencia->fetch(PDO::FETCH_OBJ);
         return $path;
     }
 }
