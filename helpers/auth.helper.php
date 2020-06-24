@@ -9,7 +9,10 @@ class AuthHelper
             session_start();
         }
     }
-    //verifica que este loggeado, en caso de que no lo envía al home y corta la ejecución
+    /**
+     *  Verifica que este loggeado, en caso de que no lo envía al home y corta la ejecución
+     */
+ 
     static public function checkLogged()
     {
         self::start();
@@ -18,8 +21,10 @@ class AuthHelper
             die();
         }
     }
-
-    //devuelve true en caso de estar loggeado
+    /**
+     * Devuelve true en caso de estar loggeado
+     */
+    
     static public function isLogged()
     {
         self::start();
@@ -29,8 +34,9 @@ class AuthHelper
             return false;
         }
     }
-
-    //devuelve el email de usuario loggeado
+    /**
+     * Devuelve el email de usuario loggeado
+     */
     static public function user()
     {
         self::start();
@@ -40,8 +46,9 @@ class AuthHelper
             return false;
         }
     }
-
-    //asigna los valores de sesion id, email y el estado log
+    /**
+     * Asigna los valores de sesion id, email y el estado log
+     */
     static public function setSessionData($userdb)
     {
         self::start();
@@ -50,7 +57,9 @@ class AuthHelper
         $_SESSION['LOGGED'] = true;
     }
 
-    //destruye la sesion
+    /**
+     *  Destruye la sesion
+     * */
     static public function logout()
     {
         self::start();

@@ -4,8 +4,8 @@ require_once 'conection.model.php';
 class TournamentModel extends ConectionModel
 {
     /**
-    * Trae de la db lista de items ordenada por votos descendente
-    */
+     * Trae de la db lista de items ordenada por votos descendente
+     */
     public function getItemList()
     {
         $db = $this->getDb();
@@ -67,8 +67,8 @@ class TournamentModel extends ConectionModel
     }
 
     /**
-    * Borrado de item
-    */
+     * Borrado de item
+     */
     public function deleteItem($idItem)
     {
         $db = $this->getDb();
@@ -87,5 +87,4 @@ class TournamentModel extends ConectionModel
         $sentencia = $db->prepare("UPDATE torneos SET torneo=?, id_deporte_fk=?, pais=?, descripcion=? WHERE id_torneo=?");
         $sentencia->execute([$tournament, $idSportFK, $country, $description, $idItem]);
     }
-
 }
