@@ -29,7 +29,6 @@ class SpokonController
     //muestra lista de item
     public function showTournament($id_torneo)
     {
-        //se podria manejar mejor desde el model con una consulta diferente
         $itemListById = $this->modelItem->getItemListById($id_torneo);
         $tournamentById = $this->modelCategory->getCategoryById($id_torneo);
 

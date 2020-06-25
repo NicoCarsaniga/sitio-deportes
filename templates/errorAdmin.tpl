@@ -12,12 +12,11 @@
     <title>Spokon</title>
 </head>
 <body>
-
     <div class='text-center bg-danger'>
         <h2>Error</h2>
         <h5>{$msg}</h5>
         <i class="fas fa-exclamation-triangle"></i>
-        <h5><a class="text-warning mb-3" href="{$base_url}index">Volver a Inicio</a></h5>
+        <h5><a class="mb-3 text-warning " href="{$base_url}adminPage">Volver</a></h5>
     </div>
 
 {include 'footer.tpl'}

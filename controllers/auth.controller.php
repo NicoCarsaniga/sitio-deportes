@@ -1,15 +1,16 @@
 <?php
 
 require_once 'models/user.model.php';
-
+require_once 'views/error.view.php';
 class AuthController
 {
-
     private $model;
+    private $view;
 
     public function __construct()
     {
         $this->model = new UsersModel();
+        $this->view = new ErrorView();
     }
 
 
@@ -25,7 +26,7 @@ class AuthController
             AuthHelper::SetSessionData($userdb);
             header('Location:' . BASE_URL . 'adminPage');
         } else {
-            header('Location:' . BASE_URL . 'error');
+            $this->view->loginError("Usuario o contraseña incorrectos.");
         }
     }
 

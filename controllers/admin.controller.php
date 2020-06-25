@@ -4,7 +4,7 @@ require_once 'models/tournament.model.php';
 require_once 'models/category.model.php';
 require_once 'models/images.model.php';
 require_once 'views/admin.view.php';
-require_once 'views/spokon.view.php';
+require_once 'views/error.view.php';
 require_once 'helpers/auth.helper.php';
 class AdminController
 {
@@ -12,7 +12,7 @@ class AdminController
     private $modelItem;
     private $modelCategory;
     private $view;
-    private $viewSpokon;
+    private $viewError;
 
     public function __construct()
     {
@@ -22,7 +22,7 @@ class AdminController
         $categories = $this->modelCategory->getCategoryList();
         $this->modelImg = new Images();
         $this->view = new AdminView($categories);
-        $this->viewSpokon = new SpokonView($categories);
+        $this->viewError = new ErrorView();
         AuthHelper::checkLogged();
     }
 
@@ -42,7 +42,7 @@ class AdminController
     {
         $newSport = $_POST['newSport'];
         if (empty($newSport)) {
-            $this->viewSpokon->showError("Faltan datos obligatorios");
+            $this->viewError->adminError("Faltan datos obligatorios");
             die();
         }
         $this->modelCategory->insert($newSport);
@@ -61,8 +61,8 @@ class AdminController
         $description = $_POST['description'];
 
         //verificación 
-        if (empty($tournament | $idSportFK | $country | $description)) {
-            $this->viewSpokon->showError("Faltan datos obligatorios");
+        if (empty($tournament && $idSportFK && $country && $description)) {
+            $this->viewError->adminError("Faltan datos obligatorios");
             die();
         }
         //ultimo id ítem
@@ -111,8 +111,8 @@ class AdminController
         $description = $_POST['description'];
         $img = $_POST['img'];
 
-        if (empty($tournament || $idSportFK || $country || $description || $img)) {
-            $this->viewSpokon->showError("Faltan datos obligatorios");
+        if (empty($tournament && $idSportFK && $country && $description && $img)) {
+            $this->viewError->adminError("Faltan datos obligatorios");
             die();
         }
 
@@ -137,7 +137,7 @@ class AdminController
         $idCategory = $_POST['idCategory'];
         $sport = $_POST['sport'];
         if (empty($sport)) {
-            $this->viewSpokon->showError("Faltan datos obligatorios");
+            $this->viewError->adminError("Faltan datos obligatorios");
             die();
         }
         $this->modelCategory->editCategory($idCategory, $sport);
@@ -154,7 +154,7 @@ class AdminController
         $itemList = $this->modelItem->getItemListById($idCategory);
 
         if (!empty($itemList)) {
-            $this->viewSpokon->showError("Elmine los torneos asociados a este deporte");
+            $this->viewError->adminError("Elmine los torneos asociados a este deporte");
             die();
         } else {
             $this->modelCategory->deleteCategory($idCategory);
