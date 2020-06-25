@@ -12,4 +12,13 @@ class UsersModel extends ConectionModel
         $sentencia->execute([$user]);
         return $sentencia->fetch(PDO::FETCH_OBJ);
     }
+
+    public function addUser($mail, $hash, $name, $surname){
+
+        $db = $this->getDb();
+
+        $sentencia = $db->prepare("INSERT INTO usuarios(email, contrasenia, nombre, apellido) VALUES(?,?,?,?)");
+        $sentencia->execute([$mail, $hash, $name, $surname]);
+        
+    }
 }

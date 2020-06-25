@@ -11,7 +11,7 @@ $router = new Router();
 $router->addRoute('categories','GET','CategoryApiController','getCategories');
 $router->addRoute('categories/:ID','GET','CategoryApiController','getCategory');
 $router->addRoute('categories/:ID','DELETE','CategoryApiController','deleteCategory');
-//$router->addRoute('categories','POST','CategoryApiController','addCategory');
+$router->addRoute('categories','POST','CategoryApiController','addCategory');
 
 //Crea las rutas para los items
 $router->addRoute('items','GET','ItemApiController','getItems');

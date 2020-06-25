@@ -54,4 +54,9 @@ class SpokonView
 
         $this->smarty->display('showError.tpl');
     }
+    //vista de formulario
+    public function showForm(){
+
+        $this->smarty->display('signInForm.tpl');
+    }
 }

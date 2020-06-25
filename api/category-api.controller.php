@@ -10,6 +10,7 @@ class CategoryApiController
     private $model;
     private $modelItem;
     private $view;
+    private $data;
 
 
     public function __construct()
@@ -17,6 +18,8 @@ class CategoryApiController
         $this->model = new CategoryModel();
         $this->view = new APIView();
         $this->modelItem = new TournamentModel();
+
+        $this->data = file_get_contents("php://input");
     }
 
     //petición de categorias
@@ -62,11 +65,24 @@ class CategoryApiController
             die();
         }
     }
-    /**
-     *      //agregado de categoría
-     *     public function addCategory($params = [])
-     *   {
-     *       $this->model->insert($params[]);
-     *   }
-     */
+    public function getData() {
+        return json_decode($this->data);
+    }
+
+    public function addCategory() {
+        // devuelve el objeto JSON enviado por POST     
+        $body = $this->getData();
+
+        // inserta la tarea
+        $sport = $body->deporte;
+        
+        
+        $category_id = $this->model->insert($sport);
+
+        if ($category_id){
+            $this->view->response("Se agrego el deporte con id: {$category_id}", 200);
+        }else{
+            $this->view->response("El deporte no fue agregado", 500);
+        }
+    }
 }

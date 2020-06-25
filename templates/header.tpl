@@ -36,6 +36,7 @@
                     <input class="form-control mr-sm-1" type="text" name="user" placeholder="e-mail">
                     <input class="form-control mr-sm-1" type="password" name="password" placeholder="password">
                     <button class="btn btn-info" type="submit">Ingresar</button>
+                    <a type="button" class="btn btn-warning" href="signIn">Registrarse</a>
                 </form>
             {else}
                 <div>

@@ -35,4 +35,24 @@ class AuthController
         AuthHelper::logout();
         header("Location: " . BASE_URL . 'index');
     }
+
+    public function addNewUser(){
+
+        $mail = $_POST['mail'];
+        $password = $_POST['pass'];
+        $name = $_POST['name'];
+        $surname = $_POST['surname'];
+
+        //encripto el password
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+
+        if (empty($mail | $hash | $name | $surname)) {
+            $this->viewSpokon->showError("Faltan datos obligatorios");
+            die();
+        }
+        $this->model->addUser($mail, $hash, $name, $surname);
+
+        header('Location: ' . BASE_URL . "index");
+
+    }
 }

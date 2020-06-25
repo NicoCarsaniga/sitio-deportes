@@ -47,4 +47,12 @@ class SpokonController
     {
         $this->view->showError($error);
     }
+
+    /**
+     * muestra formulario para inscripcion
+     */
+    public function signIn(){
+
+        $this->view->showForm();
+    }
 }

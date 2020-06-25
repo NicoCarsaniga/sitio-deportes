@@ -86,6 +86,16 @@ switch ($parametros[0]) {
         $controller->logout();
         break;
 
+    case "signIn":
+        $controller = new SpokonController();
+        $controller->signIn();
+        break;
+    
+    case "signNewUser":
+        $controller = new AuthController();
+        $controller->addNewUser();
+    break;
+
     default:
         $controller = new SpokonController();
         $controller->showError("404 not found");

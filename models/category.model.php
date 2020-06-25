@@ -21,6 +21,8 @@ class CategoryModel extends ConectionModel
 
         $sentencia = $db->prepare("INSERT INTO deportes(deporte) VALUES(?)");
         $sentencia->execute([$newSport]);
+
+        
     }
     //devuelve categoria por id
     public function getCategoryById($id_deporte)
