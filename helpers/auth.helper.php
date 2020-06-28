@@ -54,6 +54,7 @@ class AuthHelper
         self::start();
         $_SESSION['ID_USER'] = $userdb->id_usuario;
         $_SESSION['USER'] = $userdb->email;
+        $_SESSION['ROL'] = $userdb->rol;
         $_SESSION['LOGGED'] = true;
     }
 
@@ -64,5 +65,15 @@ class AuthHelper
     {
         self::start();
         session_destroy();
+    }
+
+    static public function isAdmin()
+    {
+        self::start();
+        if (isset($_SESSION['ROL']) && $_SESSION['ROL'] == 1) {
+            return $_SESSION['ROL'];
+        } else {
+            return false;
+        }
     }
 }

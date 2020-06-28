@@ -19,6 +19,7 @@
         <div class="form-group col-md-6">
             <label for="inputCity">Apellido</label>
             <input type="text" name="surname" class="form-control">
+            <input type="hidden" name="rol" value="0">
         </div>
     </div>
     <button type="submit" class="btn btn-primary">Registrarse</button>

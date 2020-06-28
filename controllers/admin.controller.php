@@ -13,6 +13,7 @@ class AdminController
     private $modelCategory;
     private $view;
     private $viewError;
+    private $admin;
 
     public function __construct()
     {
@@ -24,6 +25,7 @@ class AdminController
         $this->view = new AdminView($categories);
         $this->viewError = new ErrorView();
         AuthHelper::checkLogged();
+        $this->admin = AuthHelper::isAdmin();
     }
 
     /**
@@ -31,8 +33,13 @@ class AdminController
      */
     public function showAdminPage()
     {
-        $itemList = $this->modelItem->getItemList();
-        $this->view->adminPage($itemList);
+        if($this->admin)
+        {
+            $itemList = $this->modelItem->getItemList();
+            $this->view->adminPage($itemList);
+        }else {
+            $this->viewError->showError("Regístrese como administrador para acceder a esta página");
+        }
     }
 
     /**

@@ -24,20 +24,25 @@ class AuthController
 
         if ($userdb && password_verify($password, $userdb->contrasenia)) {
             AuthHelper::SetSessionData($userdb);
-            header('Location:' . BASE_URL . 'adminPage');
+            $this->redirect();
         } else {
             $this->view->loginError("Usuario o contraseña incorrectos.");
         }
     }
-
-    //destruye lasesion del usuario
+    /**
+     * Destruye la sesion del usuario
+     */
     public function logout()
     {
         AuthHelper::logout();
         header("Location: " . BASE_URL . 'index');
     }
 
-    public function addNewUser(){
+    /**
+     * Agrega un nuevo usuario
+     */
+    public function addNewUser()
+    {
 
         $mail = $_POST['mail'];
         $password = $_POST['pass'];
@@ -47,13 +52,20 @@ class AuthController
         //encripto el password
         $hash = password_hash($password, PASSWORD_DEFAULT);
 
-        if (empty($mail | $hash | $name | $surname)) {
-            $this->viewSpokon->showError("Faltan datos obligatorios");
+        if (empty($mail && $hash && $name && $surname)) {
+            $this->view->showError("Faltan datos obligatorios");
             die();
         }
         $this->model->addUser($mail, $hash, $name, $surname);
 
         header('Location: ' . BASE_URL . "index");
+    }
 
+    public function redirect()
+    {   
+        if($_SESSION['ROL'])
+            header('Location:' . BASE_URL . 'adminPage');
+            else
+            header('Location:' . BASE_URL . 'index');
     }
 }

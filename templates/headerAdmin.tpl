@@ -31,6 +31,7 @@
                     </li>
                 </ul>
                 <div>
+                    <a href="adminPage" type="button" class="btn btn-warning">{$USER}</a>
                     <a href="logout" type="button" class="btn btn-danger">Cerrar sesión</a>
                 </div>
             </div>
