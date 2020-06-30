@@ -38,7 +38,7 @@ class AdminController
             $itemList = $this->modelItem->getItemList();
             $this->view->adminPage($itemList);
         }else {
-            $this->viewError->showError("Regístrese como administrador para acceder a esta página");
+            $this->viewError->showError("Regístrese como administrador para acceder a esta página", 'adminPage');
         }
     }
 
@@ -49,7 +49,7 @@ class AdminController
     {
         $newSport = $_POST['newSport'];
         if (empty($newSport)) {
-            $this->viewError->adminError("Faltan datos obligatorios");
+            $this->viewError->showError("Faltan datos obligatorios", 'adminPage');
             die();
         }
         $this->modelCategory->insert($newSport);
@@ -69,7 +69,7 @@ class AdminController
 
         //verificación 
         if (empty($tournament && $idSportFK && $country && $description)) {
-            $this->viewError->adminError("Faltan datos obligatorios");
+            $this->viewError->showError("Faltan datos obligatorios", 'adminPage');
             die();
         }
         //ultimo id ítem
@@ -119,7 +119,7 @@ class AdminController
         $img = $_POST['img'];
 
         if (empty($tournament && $idSportFK && $country && $description && $img)) {
-            $this->viewError->adminError("Faltan datos obligatorios");
+            $this->viewError->showError("Faltan datos obligatorios", 'adminPage');
             die();
         }
 
@@ -144,7 +144,7 @@ class AdminController
         $idCategory = $_POST['idCategory'];
         $sport = $_POST['sport'];
         if (empty($sport)) {
-            $this->viewError->adminError("Faltan datos obligatorios");
+            $this->viewError->showError("Faltan datos obligatorios", 'adminPage');
             die();
         }
         $this->modelCategory->editCategory($idCategory, $sport);
@@ -161,7 +161,7 @@ class AdminController
         $itemList = $this->modelItem->getItemListById($idCategory);
 
         if (!empty($itemList)) {
-            $this->viewError->adminError("Elmine los torneos asociados a este deporte");
+            $this->viewError->showError("Elmine los torneos asociados a este deporte", 'adminPage');
             die();
         } else {
             $this->modelCategory->deleteCategory($idCategory);

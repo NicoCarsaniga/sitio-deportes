@@ -15,27 +15,11 @@ class ErrorView
     /**
      *  Vista de errores
      */
-    public function showError($msg)
+    public function showError($msg, $page)
     {
         $this->smarty->assign('msg', $msg);
+        $this->smarty->assign('page', $page);
         $this->smarty->display('showError.tpl');
     }
 
-    /**
-     *  Errores de logeo
-     */
-    public function loginError($msg)
-    {
-        $this->smarty->assign('msg', $msg); 
-        $this->smarty->display('errorLogin.tpl');
-    }
-
-    /**
-     * Errores de admin
-     */
-    public function adminError($msg)
-    {
-        $this->smarty->assign('msg', $msg); 
-        $this->smarty->display('errorAdmin.tpl');
-    }
 }

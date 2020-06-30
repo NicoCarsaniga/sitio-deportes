@@ -17,7 +17,7 @@
         <h2>Error</h2>
         <h5>{$msg}</h5>
         <i class="fas fa-exclamation-triangle"></i>
-        <h5><a class="text-warning mb-3" href="{$base_url}index">Volver a Inicio</a></h5>
+        <h5><a class="text-warning mb-3" href="{$base_url}{$page}">Volver</a></h5>
     </div>
 
 {include 'footer.tpl'}
