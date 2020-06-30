@@ -13,6 +13,7 @@ class SpokonView
         $this->smarty->assign('categories', $categories);
         $this->smarty->assign('isLogged',  AuthHelper::isLogged());
         $this->smarty->assign('USER', AuthHelper::user());
+        $this->smarty->assign('ROL', AuthHelper::isAdmin());
     }
     //muestra la lista de items
     public function showItemList($itemList)

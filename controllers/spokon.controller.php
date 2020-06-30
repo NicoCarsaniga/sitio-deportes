@@ -3,6 +3,7 @@
 require_once 'models/category.model.php';
 require_once 'models/tournament.model.php';
 require_once 'views/spokon.view.php';
+require_once 'views/error.view.php';
 
 class SpokonController
 {
@@ -16,6 +17,7 @@ class SpokonController
         $this->modelCategory = new CategoryModel();
         $categories = $this->modelCategory->getCategoryList();
         $this->view = new SpokonView($categories);
+        $this->viewError = new ErrorView();
     }
     //pag principal y publica
     public function showMain()
@@ -42,9 +44,9 @@ class SpokonController
         $this->view->showItem($itemInfo);
     }
     //pag de errores
-    function showError($error)
+    function showError($error, $page)
     {
-        $this->view->showError($error);
+        $this->viewError->showError($error, $page);
     }
 
     /**

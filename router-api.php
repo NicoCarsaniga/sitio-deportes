@@ -1,7 +1,7 @@
 <?php
 
 require_once 'libs/router/Router.php';
-require_once 'api/category-api.controller.php';
+require_once 'api/comment-api.controller.php';
 
 // se crea el router en base a la libreria
 $router = new Router();

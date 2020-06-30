@@ -98,6 +98,6 @@ switch ($parametros[0]) {
 
     default:
         $controller = new SpokonController();
-        $controller->showError("404 not found");
+        $controller->showError("404 not found",'index');
         break;
 }

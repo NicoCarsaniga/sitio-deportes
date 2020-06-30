@@ -36,12 +36,12 @@ class Comments extends ConectionModel
     }
 
     /**
-     * Devuelve todos los registros
+     * Devuelve todos los registros de la tabla
      */
     public function getComments($itemId)
     {
         $db = $this->getDb();
-        $sentencia = $db->prepare("SELECT * FROM comentarios WHERE id_torneo_fk = ?");
+        $sentencia = $db->prepare("SELECT * FROM comentarios WHERE id_torneo_fk=?");
         $sentencia->execute([$itemId]);
         $comments = $sentencia->fetchAll(PDO::FETCH_OBJ);
         return $comments;
@@ -53,7 +53,7 @@ class Comments extends ConectionModel
     public function getComment($commentId)
     {
         $db = $this->getDb();
-        $sentencia = $db->prepare("SELECT * FROM comentarios WHERE id_comentario = ?");
+        $sentencia = $db->prepare("SELECT * FROM comentarios WHERE id_comentario=?");
         $sentencia->execute([$commentId]);
         $comments = $sentencia->fetch(PDO::FETCH_OBJ);
         return $comments;

@@ -20,7 +20,7 @@ class CommentApiController
      */
     public function getComments($params = [])
     {
-        $itemId = $params = [':ID'];
+        $itemId = $params[':ID'];
         $comments = $this->model->getComments($itemId);
 
         $this->view->response($comments, 200);
