@@ -44,19 +44,37 @@ class AuthController
     public function addNewUser()
     {
 
-        $mail = $_POST['mail'];
+        $email = $_POST['mail'];
         $password = $_POST['pass'];
         $name = $_POST['name'];
         $surname = $_POST['surname'];
+        $role = $_POST['rol'];
+
+
+        $userdb = $this->model->getUser($email);
+
+        
+        if(!empty($userdb)){
+            $this->view->mailInUse("Ese mail ya esta registrado");
+            die();
+        }
 
         //encripto el password
         $hash = password_hash($password, PASSWORD_DEFAULT);
 
-        if (empty($mail && $hash && $name && $surname)) {
+        if (empty($email && $hash && $name && $surname)) {
             $this->view->showError("Faltan datos obligatorios");
             die();
         }
-        $this->model->addUser($mail, $hash, $name, $surname);
+        $success = $this->model->addUser($email, $hash, $name, $surname, $role);
+
+
+        if($success){
+            $user = $this->model->getUser($email);
+            AuthHelper::SetSessionData($user);
+            $this->redirect();
+        }
+
 
         header('Location: ' . BASE_URL . "index");
     }

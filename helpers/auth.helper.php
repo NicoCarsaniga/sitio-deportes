@@ -60,7 +60,7 @@ class AuthHelper
 
     /**
      *  Destruye la sesion
-     * */
+     */
     static public function logout()
     {
         self::start();

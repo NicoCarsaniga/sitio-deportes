@@ -38,4 +38,13 @@ class ErrorView
         $this->smarty->assign('msg', $msg); 
         $this->smarty->display('errorAdmin.tpl');
     }
+
+    /**
+     * Usuario Existente
+     */
+    public function mailInUse($msg){
+
+        $this->smarty->assign('msg', $msg); 
+        $this->smarty->display('mailInUse.tpl');
+    }
 }
