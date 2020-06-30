@@ -15,9 +15,10 @@ class ErrorView
     /**
      *  Vista de errores
      */
-    public function showError($msg)
+    public function showError($msg, $page)
     {
         $this->smarty->assign('msg', $msg);
+        $this->smarty->assign('page', $page);
         $this->smarty->display('showError.tpl');
     }
 

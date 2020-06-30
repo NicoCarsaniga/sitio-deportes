@@ -26,7 +26,7 @@ class AuthController
             AuthHelper::SetSessionData($userdb);
             $this->redirect();
         } else {
-            $this->view->loginError("Usuario o contraseña incorrectos.");
+            $this->view->showError("Usuario o contraseña incorrectos.", 'adminPage');
         }
     }
     /**
@@ -63,7 +63,7 @@ class AuthController
         $hash = password_hash($password, PASSWORD_DEFAULT);
 
         if (empty($email && $hash && $name && $surname)) {
-            $this->view->showError("Faltan datos obligatorios");
+            $this->view->showError("Faltan datos obligatorios", 'adminPage');
             die();
         }
         $success = $this->model->addUser($email, $hash, $name, $surname, $role);

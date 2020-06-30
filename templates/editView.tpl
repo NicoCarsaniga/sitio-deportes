@@ -34,6 +34,7 @@
     </div>
   </div>
   <button class="btn btn-primary" type="submit">Confirmar Edición</button>
+  <h5><a class="text-warning mb-3" href="{$base_url}/adminPage">Volver</a></h5>
 </form>
 
 

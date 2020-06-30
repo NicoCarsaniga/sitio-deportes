@@ -10,6 +10,7 @@ class AdminView
     public function __construct($categories)
     {
         $this->smarty = new Smarty();
+        $this->smarty->assign('base_url', BASE_URL);
         $this->smarty->assign('categories', $categories);
         $this->smarty->assign('isLogged',  AuthHelper::isLogged());
         $this->smarty->assign('USER', AuthHelper::user());
