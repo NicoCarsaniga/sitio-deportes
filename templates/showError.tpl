@@ -12,7 +12,6 @@
     <title>Spokon</title>
 </head>
 <body>
-
     <div class='text-center bg-danger'>
         <h2>Error</h2>
         <h5>{$msg}</h5>

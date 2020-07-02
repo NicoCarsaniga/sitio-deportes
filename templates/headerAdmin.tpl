@@ -36,4 +36,9 @@
                 </div>
             </div>
     </nav>
-    
+    <div class="container-fluid mb-10"
+        id="info-user" 
+        data-rol={$ROL}
+        data-user={$USER}
+        data-userid={$ID_USER}
+    >

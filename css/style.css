@@ -4,8 +4,8 @@ body {
 }
 
 footer {
-    position: fixed;
-    bottom: 0;
+    position: static; 
+    bottom: 0px;
     width: 100%;
 
 }

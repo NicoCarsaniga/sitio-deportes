@@ -10,10 +10,12 @@ class SpokonView
     public function __construct($categories)
     {
         $this->smarty = new Smarty();
+        $this->smarty->assign('base_url', BASE_URL);
         $this->smarty->assign('categories', $categories);
         $this->smarty->assign('isLogged',  AuthHelper::isLogged());
-        $this->smarty->assign('USER', AuthHelper::user());
-        $this->smarty->assign('ROL', AuthHelper::isAdmin());
+        $this->smarty->assign('USER', AuthHelper::userName());
+        $this->smarty->assign('ROL', AuthHelper::role());
+        $this->smarty->assign('ID_USER', AuthHelper::role());
     }
     //muestra la lista de items
     public function showItemList($itemList)
@@ -47,14 +49,7 @@ class SpokonView
         $this->smarty->assign('top3', $top3);
         $this->smarty->display('mainBody.tpl');
     }
-    //vista de errores
-    public function showError($msg)
-    {
-        $this->smarty->assign('base_url', BASE_URL);
-        $this->smarty->assign('msg', $msg);
 
-        $this->smarty->display('showError.tpl');
-    }
     //vista de formulario
     public function showForm(){
 

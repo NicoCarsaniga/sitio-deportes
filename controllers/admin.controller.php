@@ -25,7 +25,7 @@ class AdminController
         $this->view = new AdminView($categories);
         $this->viewError = new ErrorView();
         AuthHelper::checkLogged();
-        $this->admin = AuthHelper::isAdmin();
+        $this->admin = AuthHelper::role();
     }
 
     /**
@@ -38,7 +38,7 @@ class AdminController
             $itemList = $this->modelItem->getItemList();
             $this->view->adminPage($itemList);
         }else {
-            $this->viewError->showError("Regístrese como administrador para acceder a esta página", 'adminPage');
+            $this->viewError->showError("Regístrese como administrador para acceder a esta página", 'index');
         }
     }
 

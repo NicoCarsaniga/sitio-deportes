@@ -22,30 +22,4 @@ class ErrorView
         $this->smarty->display('showError.tpl');
     }
 
-    /**
-     *  Errores de logeo
-     */
-    public function loginError($msg)
-    {
-        $this->smarty->assign('msg', $msg); 
-        $this->smarty->display('errorLogin.tpl');
-    }
-
-    /**
-     * Errores de admin
-     */
-    public function adminError($msg)
-    {
-        $this->smarty->assign('msg', $msg); 
-        $this->smarty->display('errorAdmin.tpl');
-    }
-
-    /**
-     * Usuario Existente
-     */
-    public function mailInUse($msg){
-
-        $this->smarty->assign('msg', $msg); 
-        $this->smarty->display('mailInUse.tpl');
-    }
 }

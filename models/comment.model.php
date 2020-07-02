@@ -7,12 +7,12 @@ class Comments extends ConectionModel
     /**
      * Añadido de comentario
      */
-    public function addComment($comment, $itemId)
+    public function addComment($comment, $itemId, $vote, $userId)
     {
         $db = $this->getDb();
-        $sentencia = $db->prepare("INSERT INTO comentarios(comentario, id_torneo_fk) VALUES(?, ?)");
-        $sentencia->execute([$comment, $itemId]);
-        //return $db->lastInsertId();
+        $sentencia = $db->prepare("INSERT INTO comentarios(comentario, id_torneo_fk, votos, id_usuario_fk) VALUES(?, ?, ?, ?)");
+        $sentencia->execute([$comment, $itemId, $vote, $userId]);
+        return $db->lastInsertId();
     }
 
     /**
@@ -26,22 +26,12 @@ class Comments extends ConectionModel
     }
 
     /**
-     * Agrega votos
-     */
-    public function addVote($idComment, $vote)
-    {
-        $db = $this->getDb();
-        $sentencia = $db->prepare("INSERT INTO comentarios(votos) WHERE id_comentario=?");
-        $sentencia->execute([$vote, $idComment]);
-    }
-
-    /**
-     * Devuelve todos los registros de la tabla
+     * Devuelve todos los registros de la tabla comentarios y los usuarios asociados
      */
     public function getComments($itemId)
     {
         $db = $this->getDb();
-        $sentencia = $db->prepare("SELECT * FROM comentarios WHERE id_torneo_fk=?");
+        $sentencia = $db->prepare("SELECT * FROM comentarios INNER JOIN usuarios ON comentarios.id_usuario_fk=usuarios.id_usuario WHERE id_torneo_fk=?");
         $sentencia->execute([$itemId]);
         $comments = $sentencia->fetchAll(PDO::FETCH_OBJ);
         return $comments;
