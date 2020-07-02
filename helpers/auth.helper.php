@@ -12,7 +12,6 @@ class AuthHelper
     /**
      *  Verifica que este loggeado, en caso de que no lo envía al home y corta la ejecución
      */
- 
     static public function checkLogged()
     {
         self::start();
@@ -70,7 +69,7 @@ class AuthHelper
     static public function isAdmin()
     {
         self::start();
-        if (isset($_SESSION['ROL']) && $_SESSION['ROL'] == 1) {
+        if (isset($_SESSION['ROL'])) {
             return $_SESSION['ROL'];
         } else {
             return false;

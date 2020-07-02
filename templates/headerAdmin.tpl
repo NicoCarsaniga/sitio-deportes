@@ -33,6 +33,7 @@
                 <div>
                     <a href="adminPage" type="button" class="btn btn-warning">{$USER}</a>
                     <a href="logout" type="button" class="btn btn-danger">Cerrar sesión</a>
+                    <a href="users"type="buton" class="btn btn-info">lista de usuarios</a>
                 </div>
             </div>
     </nav>

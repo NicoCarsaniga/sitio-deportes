@@ -3,6 +3,7 @@
 require_once 'models/tournament.model.php';
 require_once 'models/category.model.php';
 require_once 'models/images.model.php';
+require_once 'models/user.model.php';
 require_once 'views/admin.view.php';
 require_once 'views/error.view.php';
 require_once 'helpers/auth.helper.php';
@@ -11,6 +12,7 @@ class AdminController
 
     private $modelItem;
     private $modelCategory;
+    private $modelUser;
     private $view;
     private $viewError;
     private $admin;
@@ -22,6 +24,7 @@ class AdminController
         $this->modelCategory = new CategoryModel();
         $categories = $this->modelCategory->getCategoryList();
         $this->modelImg = new Images();
+        $this->modelUser = new UsersModel();
         $this->view = new AdminView($categories);
         $this->viewError = new ErrorView();
         AuthHelper::checkLogged();
@@ -168,5 +171,40 @@ class AdminController
         }
 
         header('Location: ' . BASE_URL . "adminPage");
+    }
+    /**
+     * obtiene todos los usuarios registrados
+     */
+    public function getUsers(){
+
+        $users = $this->modelUser->getUsers();
+
+        $this->view->usersList($users);
+    }
+    /**
+     * edita el rol del usuario, para hacerlo administrador
+     */
+    public function editUserRole($userID){
+
+        $user = $this->modelUser->getUser($userID);
+
+        if(!empty($user)){
+
+            $userID = $user->id_usuario;
+
+            $this->modelUser->editUserRole($userID);
+        }
+
+        header('Location: ' . BASE_URL . "users");
+    }
+
+    /**
+     * Elimina un usuario
+     */
+    public function deleteUser($userID){
+
+        $this->modelUser->delete($userID);
+
+        header('Location: ' . BASE_URL . "users");
     }
 }

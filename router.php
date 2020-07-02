@@ -94,7 +94,22 @@ switch ($parametros[0]) {
     case "signNewUser":
         $controller = new AuthController();
         $controller->addNewUser();
-    break;
+        break;
+
+    case "users":
+        $controller = new AdminController();
+        $controller->getUsers();
+        break;
+
+    case "editRole":
+        $controller = new AdminController();
+        $controller->editUserRole($parametros[1]);
+        break;
+    
+    case "deleteUser":
+        $controller = new AdminController();
+        $controller->deleteUser($parametros[1]);
+        break;
 
     default:
         $controller = new SpokonController();

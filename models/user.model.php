@@ -10,9 +10,21 @@ class UsersModel extends ConectionModel
 
         $sentencia = $db->prepare("SELECT * FROM usuarios WHERE email = ?");
         $sentencia->execute([$user]);
+        
+        $user = $sentencia->fetch(PDO::FETCH_OBJ);
 
-        return $sentencia->fetch(PDO::FETCH_OBJ);
+        return $user;
+    }
 
+    public function getUsers(){
+
+        $db = $this->getDb();
+
+        $sentencia = $db->prepare("SELECT * FROM usuarios");
+        $sentencia->execute();
+        $users = $sentencia->fetchAll(PDO::FETCH_OBJ);
+
+        return $users;
     }
 
     public function addUser($mail, $hash, $name, $surname, $role){
@@ -24,5 +36,21 @@ class UsersModel extends ConectionModel
 
         return($success);
         
+    }
+
+    public function editUserRole($userID){
+
+        $db = $this->getDb();
+
+        $sentencia = $db->prepare("UPDATE usuarios SET rol=? WHERE id_usuario=?");
+        $sentencia->execute([1, $userID]);
+    }
+
+    public function delete($userID){
+
+        $db = $this->getDb();
+
+        $sentencia = $db->prepare("DELETE FROM usuarios WHERE id_usuario=?");
+        $sentencia->execute([$userID]);
     }
 }

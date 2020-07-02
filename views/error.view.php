@@ -11,7 +11,7 @@ class ErrorView
         $this->smarty = new Smarty();
         $this->smarty->assign('base_url', BASE_URL);
     }
-  
+
     /**
      *  Vista de errores
      */

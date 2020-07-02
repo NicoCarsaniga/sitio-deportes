@@ -41,4 +41,10 @@ class AdminView
         $this->smarty->assign('infoCategory', $infoCategory);
         $this->smarty->display('editCategoryView.tpl');
     }
+
+    public function usersList($users){
+
+        $this->smarty->assign('users', $users);
+        $this->smarty->display('editUser.tpl');
+    }
 }
