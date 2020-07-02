@@ -15,7 +15,7 @@ class AuthHelper
     static public function checkLogged()
     {
         self::start();
-        if (!isset($_SESSION['LOGGED'])) {
+        if (!isset($_SESSION['LOGGED'])||$_SESSION['ROL']==0) {
             header('Location: ' . BASE_URL . 'index');
             die();
         }
@@ -36,7 +36,7 @@ class AuthHelper
     /**
      * Devuelve el email de usuario loggeado
      */
-    static public function user()
+    static public function userName()
     {
         self::start();
         if (isset($_SESSION['USER'])) {
@@ -66,11 +66,27 @@ class AuthHelper
         session_destroy();
     }
 
-    static public function isAdmin()
+    /**
+     *  Devuelve el rol del usuario
+     */
+    static public function role()
     {
         self::start();
         if (isset($_SESSION['ROL'])) {
             return $_SESSION['ROL'];
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Devuelve id de ususario
+     */
+    static public function userId()
+    {
+        self::start();
+        if (isset($_SESSION['ID_USER'])) {
+            return $_SESSION['ID_USER'];
         } else {
             return false;
         }

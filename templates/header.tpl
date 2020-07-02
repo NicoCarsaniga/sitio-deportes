@@ -39,16 +39,25 @@
                     <button class="btn btn-info" type="submit">Ingresar</button>
                     <a type="button" class="btn btn-warning" href="signIn">Registrarse</a>
                 </form>
-            {else}
+            {elseif $ROL}
                 <div>
                     <a href="adminPage" type="button" class="btn btn-warning">{$USER}</a>
                     <a href="logout" type="button" class="btn btn-danger">Cerrar sesión</a>
                 </div>
-            {/if}
+                {else}
+                    <a href="index" type="button" class="btn btn-warning">{$USER}</a>
+                    <a href="logout" type="button" class="btn btn-danger">Cerrar sesión</a>
+                {/if}
         </nav>
         <div class="text-center bg-secondary pt-3 pb-3 mb-3">
             <h1> Bienvenidos a SPOKON</h1>
             <h3> Tu sitio para disfrutar de tus deportes favoritos </h3>
         </div>
-        <div class="container-fluid mb-5">
+        <div class="container-fluid mb-10"
+            id="info-user" 
+            data-rol={$ROL}
+            data-user={$USER}
+            data-userid={$ID_USER}
+            >
+
         

@@ -14,19 +14,21 @@ class AuthController
     }
 
 
-    //realiza la verificacion del usuario admin y redirige a la pag de admin
+    /**
+     *  Realiza la verificacion del usuario y redirige a la pag que corresponda
+     */
     public function verify()
     {
         $user = $_POST['user'];
         $password = $_POST['password'];
 
         $userdb = $this->model->getUser($user);
-
+        
         if ($userdb && password_verify($password, $userdb->contrasenia)) {
             AuthHelper::SetSessionData($userdb);
             $this->redirect();
         } else {
-            $this->view->showError("Usuario o contraseña incorrectos.", 'adminPage');
+            $this->view->showError("Usuario o contraseña incorrectos.", 'index');
         }
     }
     /**
@@ -55,7 +57,7 @@ class AuthController
 
         
         if(!empty($userdb)){
-            $this->view->mailInUse("Ese mail ya esta registrado");
+            $this->view->showError("Ese mail ya esta registrado", 'signIn');
             die();
         }
 
@@ -63,7 +65,7 @@ class AuthController
         $hash = password_hash($password, PASSWORD_DEFAULT);
 
         if (empty($email && $hash && $name && $surname)) {
-            $this->view->showError("Faltan datos obligatorios", 'adminPage');
+            $this->view->showError("Faltan datos obligatorios", 'signIn');
             die();
         }
         $success = $this->model->addUser($email, $hash, $name, $surname, $role);

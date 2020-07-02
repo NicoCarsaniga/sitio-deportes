@@ -13,7 +13,10 @@ class AdminView
         $this->smarty->assign('base_url', BASE_URL);
         $this->smarty->assign('categories', $categories);
         $this->smarty->assign('isLogged',  AuthHelper::isLogged());
-        $this->smarty->assign('USER', AuthHelper::user());
+        $this->smarty->assign('USER', AuthHelper::userName());
+        $this->smarty->assign('ROL', AuthHelper::role());
+        $this->smarty->assign('ID_USER', AuthHelper::role());
+
     }
 
     public function adminPage($itemList)
@@ -21,11 +24,6 @@ class AdminView
         $this->smarty->assign('items', $itemList);
 
         $this->smarty->display('adminPage.tpl');
-    }
-
-    public function loginAdmin()
-    {
-        $this->smarty->display('loginAdmin.tpl');
     }
 
     public function editView($infoItem)
