@@ -3,7 +3,7 @@
 let APIurl = "http://localhost/web2/TPE-1-WEB/api/comments/";
 
 let info = document.getElementById('info-user');
-
+console.log(info);
 let itemInfo = document.getElementById('info-item');
 let itemId = itemInfo.dataset.itemId;
 

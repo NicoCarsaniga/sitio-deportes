@@ -15,7 +15,7 @@ class SpokonView
         $this->smarty->assign('isLogged',  AuthHelper::isLogged());
         $this->smarty->assign('USER', AuthHelper::userName());
         $this->smarty->assign('ROL', AuthHelper::role());
-        $this->smarty->assign('ID_USER', AuthHelper::role());
+        $this->smarty->assign('ID_USER', AuthHelper::userId());
     }
     //muestra la lista de items
     public function showItemList($itemList)
@@ -37,9 +37,10 @@ class SpokonView
         $this->smarty->display('showItemListById.tpl');
     }
     //vista de item individual
-    public function showItem($infoTorneo)
+    public function showItem($infoTorneo, $img)
     {
         $this->smarty->assign('infoTorneo', $infoTorneo);
+        $this->smarty->assign('img', $img);
         $this->smarty->display('showItem.tpl');
     }
     //vista principal publica

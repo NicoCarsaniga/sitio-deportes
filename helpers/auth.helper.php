@@ -15,7 +15,7 @@ class AuthHelper
     static public function checkLogged()
     {
         self::start();
-        if (!isset($_SESSION['LOGGED'])||$_SESSION['ROL']==0) {
+        if (!isset($_SESSION['LOGGED']) || $_SESSION['ROL'] == 0) {
             header('Location: ' . BASE_URL . 'index');
             die();
         }
@@ -23,7 +23,7 @@ class AuthHelper
     /**
      * Devuelve true en caso de estar loggeado
      */
-    
+
     static public function isLogged()
     {
         self::start();

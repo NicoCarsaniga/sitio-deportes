@@ -15,7 +15,7 @@ class AdminView
         $this->smarty->assign('isLogged',  AuthHelper::isLogged());
         $this->smarty->assign('USER', AuthHelper::userName());
         $this->smarty->assign('ROL', AuthHelper::role());
-        $this->smarty->assign('ID_USER', AuthHelper::role());
+        $this->smarty->assign('ID_USER', AuthHelper::userId());
 
     }
 

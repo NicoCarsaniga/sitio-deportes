@@ -2,6 +2,7 @@
 
 require_once 'models/category.model.php';
 require_once 'models/tournament.model.php';
+require_once 'models/images.model.php';
 require_once 'views/spokon.view.php';
 require_once 'views/error.view.php';
 
@@ -9,12 +10,15 @@ class SpokonController
 {
     private $modelCategory;
     private $modelItem;
+    private $modelImg;
     private $view;
+    private $viewError;
 
     public function __construct()
     {
         $this->modelItem = new TournamentModel();
         $this->modelCategory = new CategoryModel();
+        $this->modelImg = new Images();
         $categories = $this->modelCategory->getCategoryList();
         $this->view = new SpokonView($categories);
         $this->viewError = new ErrorView();
@@ -40,8 +44,12 @@ class SpokonController
     public function showItem($id_item)
     {
         $itemInfo = $this->modelItem->getItemInfo($id_item);
+        $img = $this->modelImg->getImgPath($id_item);
+        if(empty($img)){//si no tiene img caragada muestra una por dafault
+            $img = 'default-image.png';
+        }
 
-        $this->view->showItem($itemInfo);
+        $this->view->showItem($itemInfo, $img);
     }
     //pag de errores
     function showError($error, $page)
