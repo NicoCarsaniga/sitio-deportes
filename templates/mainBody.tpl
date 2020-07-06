@@ -16,7 +16,6 @@
                     <div class="card-body">
                         <h6 class="card-subtitle text-muted">{$torneo->pais}</h6>
                     </div>
-                        <img class="img-thumbnail" src="img/{$torneo->imagen}" alt="{$torneo->torneo}">
                     <div class="card-body">
                         <p class="card-text">{$torneo->descripcion}</p>
                     </div>

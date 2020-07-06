@@ -44,12 +44,14 @@ class SpokonController
     public function showItem($id_item)
     {
         $itemInfo = $this->modelItem->getItemInfo($id_item);
-        $img = $this->modelImg->getImgPath($id_item);
-        if(empty($img)){//si no tiene img caragada muestra una por dafault
-            $img = 'default-image.png';
+        $img =  $this->modelImg->getImgPath($id_item);
+        
+        if($img){//si no tiene img cargada muestra una por default
+            $imgPath = $img->ruta;
+        }else{
+            $imgPath = 'img/default-image.png';
         }
-
-        $this->view->showItem($itemInfo, $img);
+        $this->view->showItem($itemInfo, $imgPath);
     }
     //pag de errores
     function showError($error, $page)
@@ -64,4 +66,5 @@ class SpokonController
 
         $this->view->showForm();
     }
+
 }

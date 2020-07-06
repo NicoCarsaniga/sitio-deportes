@@ -1,6 +1,6 @@
 {include 'headerAdmin.tpl'}
 
-<form action="edit" method="post" enctype="multipart/form-data>
+<form action="edit" method="post" enctype="multipart/form-data">
   <div class="form-row">
     <input type="hidden" value="{$infoItem->id_torneo}" name="idItem">
     <div class="col-md-6 mb-3">
@@ -29,8 +29,8 @@
   </div>
   <div class="form-row">
     <div class="custom-file col-md-6 mb-3">
-        <input type="file" class="custom-file-input form-control" id="validatedCustomFile" value="{$infoItem->imagen}" name="img"  multiple="">
-        <label class="custom-file-label" for="validatedCustomFile">Eliga una Imagen...</label>
+        <input type="file" class="custom-file-input form-control" id="img" value="{$infoItem->imagen}" name="img"  multiple="">
+        <label class="custom-file-label" for="img">Eliga una Imagen...</label>
     </div>
   </div>
   <button class="btn btn-primary" type="submit">Confirmar Edición</button>

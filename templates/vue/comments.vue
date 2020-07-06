@@ -10,7 +10,7 @@
         <div class="form-group col-md-1">
             <label for="puntaje">Puntaje</label>
             <select class="form-control" id="puntaje">
-                <option value="1">1</i></option>
+                <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
