@@ -1,7 +1,7 @@
 {literal}
 <section id="comments">
 
-    <div v-if="rol==0||rol==1" class="row bg-secondary text-white my-1">
+    <div v-if="rol==0||rol==1" class="row bg-secondary text-white my-1 col-md-10 mx-auto">
         <form class="form-group col-md-8" id="comment-form">
             <label for="comentario">Deja tu comentario</label>
             <textarea class="form-control" id="comentario" rows="3"></textarea>
