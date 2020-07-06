@@ -9,7 +9,6 @@ require_once 'views/error.view.php';
 require_once 'helpers/auth.helper.php';
 class AdminController
 {
-
     private $modelItem;
     private $modelCategory;
     private $modelUser;
@@ -61,6 +60,32 @@ class AdminController
     }
 
     /**
+     * toma la/las img en carpeta temporal y la/las mueve a su ubicación final
+     * devuelve ubicación final
+     */
+    public function moveImg()
+    {
+        $fileName = $_FILES['img']['name'];
+        $fileType = $_FILES['img']['type'];
+
+        
+        if($fileType == "image/jpg" || $fileType == "image/jpeg" || $fileType == "image/png")
+        {
+            if ($fileName) {
+                //nombre temporal
+                $source = $_FILES["img"]["tmp_name"];
+                $finalName = "img/" . uniqid("", true) . "." . strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+                move_uploaded_file($source, $finalName);
+        }
+        return $finalName;
+        } else 
+            {
+            $this->viewError->showError("Tipo de archivo incorrecto", 'adminPage');
+            die();
+            }
+    }
+
+    /**
      * Nuevo ítem
      */
     public function addItem()
@@ -69,6 +94,7 @@ class AdminController
         $idSportFK = $_POST['idSportFK'];
         $country = $_POST['country'];
         $description = $_POST['description'];
+        $finalName = $this->moveImg();
 
         //verificación 
         if (empty($tournament && $idSportFK && $country && $description)) {
@@ -78,7 +104,7 @@ class AdminController
         //ultimo id ítem
         $itemId = $this->modelItem->addItem($tournament, $idSportFK, $country, $description);
         //inserción de img
-        $this->modelImg->addImgs($itemId);
+        $this->modelImg->addImgs($itemId, $finalName);
 
         header('Location: ' . BASE_URL . "adminPage");
     }
@@ -119,14 +145,15 @@ class AdminController
         $idSportFK = $_POST['idSportFK'];
         $country = $_POST['country'];
         $description = $_POST['description'];
-        $img = $_POST['img'];
+        $finalName = $this->moveImg();
 
-        if (empty($tournament && $idSportFK && $country && $description && $img)) {
+        if (empty($tournament && $idSportFK && $country && $description)) {
             $this->viewError->showError("Faltan datos obligatorios", 'adminPage');
             die();
         }
 
-        $this->modelItem->editItem($idItem, $tournament, $idSportFK, $country, $description, $img);
+        $this->modelItem->editItem($idItem, $tournament, $idSportFK, $country, $description);
+        $this->modelImg->addImgs($idItem, $finalName);
 
         header('Location: ' . BASE_URL . "adminPage");
     }

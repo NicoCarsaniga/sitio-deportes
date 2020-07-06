@@ -3,9 +3,9 @@
 let APIurl = "http://localhost/web/Entrega/TPE-1-WEB/api/comments/";
 
 let info = document.getElementById('info-user');
-console.log(info);
 let itemInfo = document.getElementById('info-item');
-let itemId = itemInfo.dataset.itemId;
+let itemId = itemInfo.dataset.infoItem;
+
 
 /**
  * Botón que envía mediante API REST un comentario

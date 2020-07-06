@@ -1,7 +1,7 @@
 {literal}
 <section id="comments">
 
-    <div v-if="rol==0||rol==1" class="row bg-secondary text-white my-1">
+    <div v-if="rol==0||rol==1" class="row bg-secondary text-white my-1 col-md-10 mx-auto">
         <form class="form-group col-md-8" id="comment-form">
             <label for="comentario">Deja tu comentario</label>
             <textarea class="form-control" id="comentario" rows="3"></textarea>
@@ -10,7 +10,7 @@
         <div class="form-group col-md-1">
             <label for="puntaje">Puntaje</label>
             <select class="form-control" id="puntaje">
-                <option value="1">1</i></option>
+                <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>

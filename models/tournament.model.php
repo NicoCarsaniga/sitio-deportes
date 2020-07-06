@@ -17,6 +17,9 @@ class TournamentModel extends ConectionModel
         return $torneos;
     }
 
+    /**
+     * Devuelve los primeros 3 torneos con mas votos
+     */
     public function getItemListByVotos()
     {
         $db = $this->getDb();
