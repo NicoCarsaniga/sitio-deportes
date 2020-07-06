@@ -1,6 +1,6 @@
 {include 'header.tpl'}
         <h2 class="font-weight-bold">{$infoTorneo->deporte}</h2>
-        <section class="card mb-3 text-center" id="info-item" data-item-id={$infoTorneo->id_torneo}>
+        <section class="card mb-3 text-center" id="info-item" data-item-id="{$infoTorneo->id_torneo}">
             <h3 class="card-header">{$infoTorneo->torneo}</h3>
             <div class="card-body">
             <h6 class="card-subtitle text-muted">{$infoTorneo->pais}</h6>

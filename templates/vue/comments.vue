@@ -37,6 +37,7 @@
                 </div>
                 <div class="card-body my-1">
                     {{comment.comentario}}
+                    <button v-if="rol == 1" v-on:click="deleteComment(comment.id_comentario)" class="btn btn-danger">Eliminar</button>
                 </div>
                 <div class="card-footer bg-light text-muted my-1">
                     <div class="col">

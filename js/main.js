@@ -1,6 +1,6 @@
 "use strict"
 
-let APIurl = "http://localhost/web2/TPE-1-WEB/api/comments/";
+let APIurl = "http://localhost/web/Entrega/TPE-1-WEB/api/comments/";
 
 let info = document.getElementById('info-user');
 console.log(info);
@@ -21,9 +21,9 @@ let app = new Vue({
         rol: info.dataset.rol 
     },
     methods: {
-        saludar: function (id) {
-            alert("hola: " + id);
-        }
+        deleteComment: function (id) {
+            delete_comment(id);
+        },
     }
 });
 
@@ -68,6 +68,21 @@ async function addComment() {
             "body": JSON.stringify(data)
         });
         let json = await respuesta.json();
+    }
+    catch (e){
+        console.log(e);
+    }
+}
+/**
+ * elmina los comentarios de los torneos
+ */
+async function delete_comment(id){
+    try{
+        let response = await fetch(APIurl + id,{
+                "method" : "DELETE"
+            });
+        let json = await response.json();
+        getComments();
     }
     catch (e){
         console.log(e);
