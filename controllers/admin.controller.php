@@ -18,7 +18,6 @@ class AdminController
 
     public function __construct()
     {
-
         $this->modelItem = new TournamentModel();
         $this->modelCategory = new CategoryModel();
         $categories = $this->modelCategory->getCategoryList();
@@ -35,11 +34,10 @@ class AdminController
      */
     public function showAdminPage()
     {
-        if($this->admin)
-        {
+        if ($this->admin) {
             $itemList = $this->modelItem->getItemList();
             $this->view->adminPage($itemList);
-        }else {
+        } else {
             $this->viewError->showError("Regístrese como administrador para acceder a esta página", 'index');
         }
     }
@@ -60,29 +58,26 @@ class AdminController
     }
 
     /**
-     * toma la/las img en carpeta temporal y la/las mueve a su ubicación final
-     * devuelve ubicación final
+     * Toma la/las img en carpeta temporal y la/las mueve a su ubicación final
+     * Devuelve ubicación final
      */
     public function moveImg()
     {
         $fileName = $_FILES['img']['name'];
         $fileType = $_FILES['img']['type'];
 
-        
-        if($fileType == "image/jpg" || $fileType == "image/jpeg" || $fileType == "image/png")
-        {
+        if ($fileType == "image/jpg" || $fileType == "image/jpeg" || $fileType == "image/png") {
             if ($fileName) {
                 //nombre temporal
                 $source = $_FILES["img"]["tmp_name"];
                 $finalName = "img/" . uniqid("", true) . "." . strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
                 move_uploaded_file($source, $finalName);
-        }
-        return $finalName;
-        } else 
-            {
+            }
+            return $finalName;
+        } else {
             $this->viewError->showError("Tipo de archivo incorrecto", 'adminPage');
             die();
-            }
+        }
     }
 
     /**
@@ -130,9 +125,9 @@ class AdminController
     public function editView($idItem)
     {
         $infoItem = $this->modelItem->getItemInfo($idItem);
-        $categories = $this->modelCategory->getCategoryList();
+        $img =  $this->modelImg->getImgPath($idItem);
 
-        $this->view->editView($infoItem, $categories);
+        $this->view->editView($infoItem, $img);
     }
 
     /**
@@ -187,7 +182,6 @@ class AdminController
      */
     public function deleteCategory($idCategory)
     {
-
         $itemList = $this->modelItem->getItemListById($idCategory);
 
         if (!empty($itemList)) {
@@ -196,29 +190,26 @@ class AdminController
         } else {
             $this->modelCategory->deleteCategory($idCategory);
         }
-
         header('Location: ' . BASE_URL . "adminPage");
     }
     /**
-     * obtiene todos los usuarios registrados
+     * Obtiene todos los usuarios registrados
      */
-    public function getUsers(){
-
+    public function getUsers()
+    {
         $users = $this->modelUser->getUsers();
 
         $this->view->usersList($users);
     }
     /**
-     * edita el rol del usuario, para hacerlo administrador
+     * Edita el rol del usuario, para hacerlo administrador
      */
-    public function editUserRole($userID){
-
+    public function editUserRole($userID)
+    {
         $user = $this->modelUser->getUser($userID);
 
-        if(!empty($user)){
-
+        if (!empty($user)) {
             $userID = $user->id_usuario;
-
             $this->modelUser->editUserRole($userID);
         }
 
@@ -228,8 +219,8 @@ class AdminController
     /**
      * Elimina un usuario
      */
-    public function deleteUser($userID){
-
+    public function deleteUser($userID)
+    {
         $this->modelUser->delete($userID);
 
         header('Location: ' . BASE_URL . "users");

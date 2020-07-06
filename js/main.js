@@ -1,7 +1,7 @@
 "use strict"
 
-let APIurl = "http://localhost/web/Entrega/TPE-1-WEB/api/comments/";
-
+//let APIurl = "http://localhost/web/Entrega/TPE-1-WEB/api/comments/";
+let APIurl = "http://localhost/web2/TPE-1-WEB/api/comments/"
 let info = document.getElementById('info-user');
 let itemInfo = document.getElementById('info-item');
 let itemId = itemInfo.dataset.infoItem;
