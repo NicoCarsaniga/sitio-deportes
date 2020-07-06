@@ -25,13 +25,14 @@
                 <option value="{$category->id_deporte}">{$category->deporte}</option>
             {/foreach}
     </select>
-    </div>
+  </div>
   </div>
   <div class="form-row">
     <div class="custom-file col-md-6 mb-3">
         <input type="file" class="custom-file-input form-control" id="img" value="{$img}" name="img"  multiple="">
         <label class="custom-file-label" for="img">Eliga una Imagen...</label>
     </div>
+    <img class="img-thumbnail img-fluid" src="{$img}" alt="{$infoItem->torneo}">
   </div>
   <button class="btn btn-primary" type="submit">Confirmar Edición</button>
   <h5><a class="text-warning mb-3" href="{$base_url}/adminPage">Volver</a></h5>

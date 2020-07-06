@@ -22,15 +22,13 @@ class AdminView
     public function adminPage($itemList)
     {
         $this->smarty->assign('items', $itemList);
-
         $this->smarty->display('adminPage.tpl');
     }
 
-    public function editView($infoItem)
+    public function editView($infoItem, $img)
     {
-
         $this->smarty->assign('infoItem', $infoItem);
-
+        $this->smarty->assign('img', $img);
         $this->smarty->display('editView.tpl');
     }
 

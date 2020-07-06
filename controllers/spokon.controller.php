@@ -23,7 +23,10 @@ class SpokonController
         $this->view = new SpokonView($categories);
         $this->viewError = new ErrorView();
     }
-    //pag principal y publica
+    
+    /**
+     * Pag principal y publica 
+     */
     public function showMain()
     {
         //data para el main
@@ -32,7 +35,9 @@ class SpokonController
 
         $this->view->showMainView($itemList, $top3);
     }
-    //muestra lista de item
+    /**
+     * Muestra lista de item
+     */
     public function showTournament($id_torneo)
     {
         $itemListById = $this->modelItem->getItemListById($id_torneo);
@@ -40,7 +45,10 @@ class SpokonController
 
         $this->view->showItemListById($itemListById, $tournamentById);
     }
-    //muestra detalle de item
+    
+    /**
+     * Muestra detalle de item
+     */
     public function showItem($id_item)
     {
         $itemInfo = $this->modelItem->getItemInfo($id_item);
@@ -53,14 +61,16 @@ class SpokonController
         }
         $this->view->showItem($itemInfo, $imgPath);
     }
-    //pag de errores
+    /**
+     * Pag de errores por deafult
+     */
     function showError($error, $page)
     {
         $this->viewError->showError($error, $page);
     }
 
     /**
-     * muestra formulario para inscripcion
+     * Muestra formulario para inscripcion
      */
     public function signIn(){
 
