@@ -1,4 +1,5 @@
 {literal}
+
 <section id="comments">
 
     <div v-if="rol==0||rol==1" class="row bg-secondary text-white my-1 col-md-10 mx-auto">
@@ -21,10 +22,11 @@
     <div class="mx-auto w-75">
         <h5>Comentarios</h5>
         <div v-if="loading" class="spinner-border"></div>
-
+        <div class="bg-primary text-center">
+            <p class="h3">Puntaje Promedios del Torneo: {{promedio}}</p>
+        </div>
         <button id="btn-reload" type="button" class="btn btn-primary btn-block">Refrescar</button>
         <!--Quiero sacarlo!!-->
-
         <ul v-if="!loading" id="comments-list" class="list-group list-group-flush">
             <div v-for="comment in comments" class="card">
                 <div class="card-header bg-secondary d-flex justify-content-between align-items-center my-1 row">
@@ -44,6 +46,7 @@
                         <p>Puntaje: {{comment.votos}}</p>
                     </div>
                 </div>
+
             </div>
         </ul>
     </div>

@@ -18,7 +18,8 @@ let app = new Vue({
         loading: false,
         comments: [],
         userName: info.dataset.user,
-        rol: info.dataset.rol 
+        rol: info.dataset.rol,
+        promedio: 0
     },
     methods: {
         deleteComment: function (id) {
@@ -36,11 +37,25 @@ getComments();
 /**
  * Trae todos los comentarios según el torneo
  */
+function promedio(comments){
+    let suma = 0;
+    if(comments.length == 0){
+        return 0;
+    }
+    for(let i=0;i<comments.length;i++){
+        suma += parseInt(comments[i].votos);
+    }
+    
+    return suma/comments.length;
+}
+
 async function getComments() {
+    
     app.loading = true;
     try {
         let respuesta = await fetch(APIurl + itemId);
         let comments = await respuesta.json();
+        app.promedio = promedio(comments);
         app.comments = comments;
         app.loading = false;
     }
@@ -48,6 +63,7 @@ async function getComments() {
         console.log(e);
     }
 }
+
 
 document.querySelector("#btn-addComment").addEventListener('click',addComment);
 /**
