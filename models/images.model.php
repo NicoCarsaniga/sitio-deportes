@@ -23,7 +23,7 @@ class Images extends ConectionModel
     {
         $db = $this->getDb();
         $sentencia = $db->prepare("DELETE FROM imagenes WHERE id_torneo_fk = ?");
-        $sentencia->execute([$itemId]);
+        return $sentencia->execute([$itemId]);
     }
 
     /**

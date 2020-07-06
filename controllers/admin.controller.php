@@ -66,7 +66,7 @@ class AdminController
         $fileName = $_FILES['img']['name'];
         $fileType = $_FILES['img']['type'];
 
-        if ($fileType == "image/jpg" || $fileType == "image/jpeg" || $fileType == "image/png") {
+        if ($fileType == "image/jpg" || $fileType == "image/jpeg" || $fileType == "image/png" || $fileType == null) {
             if ($fileName) {
                 //nombre temporal
                 $source = $_FILES["img"]["tmp_name"];
@@ -126,8 +126,12 @@ class AdminController
     {
         $infoItem = $this->modelItem->getItemInfo($idItem);
         $img =  $this->modelImg->getImgPath($idItem);
-
-        $this->view->editView($infoItem, $img);
+        if($img){
+            $imgPath = $img->ruta;
+        }else{
+            $imgPath = 'img/default-image.png';
+        }
+        $this->view->editView($infoItem, $imgPath);
     }
 
     /**
@@ -178,7 +182,7 @@ class AdminController
     }
 
     /**
-     * Edición de la categoría
+     * Borrado de categoría
      */
     public function deleteCategory($idCategory)
     {
@@ -224,5 +228,23 @@ class AdminController
         $this->modelUser->delete($userID);
 
         header('Location: ' . BASE_URL . "users");
+    }
+
+    /**
+     * Elimina solo la img
+     */
+    public function deleteImg($idItem)
+    {
+        $path = $this->modelImg->getImgPath($idItem);
+        //uso la ruta para eliminar la imagen 
+        unlink($path->ruta);
+
+        $success = $this->modelImg->deleteImg($idItem);
+
+        if(isset($success)){
+            header('Location: ' . BASE_URL . "editView/" . $idItem);
+        }else{
+            $this->viewError->showError("No se pudo eliminar la imagen.", 'adminPage');
+        }
     }
 }

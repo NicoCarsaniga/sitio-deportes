@@ -111,6 +111,10 @@ switch ($parametros[0]) {
         $controller->deleteUser($parametros[1]);
         break;
 
+    case "deleteImg":
+        $controller = new AdminController();
+        $controller->deleteImg($parametros[1]);
+
     default:
         $controller = new SpokonController();
         $controller->showError("404 not found",'index');
