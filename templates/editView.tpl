@@ -1,9 +1,9 @@
 {include 'headerAdmin.tpl'}
+<form action="edit" method="post" enctype="multipart/form-data">
   <div class="row">
     <button class="btn btn-success col-md-2" type="submit">Confirmar Edición</button>
     <a class="btn btn-warning col-md-1" href="{$base_url}/adminPage">Volver</a>
   </div>
-<form action="edit" method="post" enctype="multipart/form-data">
   <div class="form-row">
     <input type="hidden" value="{$infoItem->id_torneo}" name="idItem">
     <div class="col-md-6 mb-3">
