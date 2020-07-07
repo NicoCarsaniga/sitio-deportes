@@ -24,7 +24,7 @@
                 <ul class="nav nav-pills">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-white" id="navbardrop" data-toggle="dropdown" href="#">Deportes</a>
-                        <div class="dropdown-menu bg-success">
+                        <div class="dropdown-menu bg-light text-dark">
                             {foreach $categories item=category}
                                 <a class="dropdown-item" href="tournament/{$category->id_deporte}">{$category->deporte}</a>
                             {/foreach}
@@ -34,7 +34,7 @@
                 <ul class="nav nav-pills">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-white" id="navbardrop" data-toggle="dropdown" href="#">Torneos</a>
-                        <div class="dropdown-menu bg-success">
+                        <div class="dropdown-menu bg-light text-dark">
                             {foreach $itemList item=torneo}
                                 <a class="dropdown-item" href="item/{$torneo->id_torneo}">{$torneo->torneo}</a>
                             {/foreach}
@@ -59,7 +59,7 @@
                     <a href="logout" type="button" class="btn btn-danger">Cerrar sesión</a>
                 {/if}
         </nav>
-        <div class="text-center bg-secondary pt-3 pb-3 mb-3">
+        <div class="text-center bg-info text-white pt-3 pb-3 mb-3">
             <h1> Bienvenidos a SPOKON</h1>
             <h3> Tu sitio para disfrutar de tus deportes favoritos </h3>
         </div>

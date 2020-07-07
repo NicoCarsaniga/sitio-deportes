@@ -23,7 +23,7 @@
                 <ul class="nav nav-pills">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-white" id="navbardrop" data-toggle="dropdown" href="#">Deportes</a>
-                        <div class="dropdown-menu bg-success">
+                        <div class="dropdown-menu bg-light text-dark">
                             {foreach $categories item=category}
                                 <a class="dropdown-item" href="tournament/{$category->id_deporte}">{$category->deporte}</a>
                             {/foreach}
@@ -33,7 +33,7 @@
                 <ul class="nav nav-pills">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-white" id="navbardrop" data-toggle="dropdown" href="#">Torneos</a>
-                        <div class="dropdown-menu bg-success">
+                        <div class="dropdown-menu bg-light text-dark">
                             {foreach $itemList item=torneo}
                                 <a class="dropdown-item" href="item/{$torneo->id_torneo}">{$torneo->torneo}</a>
                             {/foreach}

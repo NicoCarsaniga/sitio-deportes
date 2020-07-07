@@ -1,5 +1,8 @@
 {include 'headerAdmin.tpl'}
-
+  <div class="row">
+    <button class="btn btn-success col-md-2" type="submit">Confirmar Edición</button>
+    <a class="btn btn-warning col-md-1" href="{$base_url}/adminPage">Volver</a>
+  </div>
 <form action="edit" method="post" enctype="multipart/form-data">
   <div class="form-row">
     <input type="hidden" value="{$infoItem->id_torneo}" name="idItem">
@@ -28,20 +31,17 @@
   </div>
   </div>
   <div class="form-row">
-    <div class="custom-file col-md-6 mb-3">
-        <input type="file" class="form-control" id="img" value="{$img}" name="img"  multiple="">
-        {if $img != 'img/default-image.png'}
-          <a class="btn btn-danger" href="deleteImg/{$infoItem->id_torneo}">Eliminar imagen</a>
-        {/if}
+    <div class="file col-md-6">
+        <label for="img">Inserte una imagen</label>
+        <input type="file" class="form-control" id="img" value="{$img}" name="img">
     </div>
-    <img class="img-thumbnail img-fluid" src="{$img}" alt="{$infoItem->torneo}">
+      {if $img != 'img/default-image.png'}
+        <a class="btn btn-danger col-md-2 my-4" href="deleteImg/{$infoItem->id_torneo}">Eliminar imagen</a>
+      {/if}
   </div>
-  <div class="form row">
-    <button class="btn btn-success" type="submit">Confirmar Edición</button>
-    <h5><a class="btn btn-warning mb-3 " href="{$base_url}/adminPage">Volver</a></h5>
+  <div class="mt-3">
+      <img class="img-thumbnail img-fluid mx-auto d-block mt-3" src="{$img}" alt="{$infoItem->torneo}">
   </div>
 </form>
-
-
 
 {include 'footer.tpl'}

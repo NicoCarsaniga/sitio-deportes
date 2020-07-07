@@ -8,7 +8,7 @@
     </section>
     <img class="img-thumbnail mx-auto d-block img-fluid" src="{$img}" alt="{$infoTorneo->torneo}">
     <div class="card-body">
-        <p class="card-text bg-secondary text-center">{$infoTorneo->descripcion}</p>
+        <p class="card-text bg-secondary text-center text-white">{$infoTorneo->descripcion}</p>
     </div>
 </div>
 {include 'vue/comments.vue'}

@@ -2,7 +2,7 @@
 
 <section id="comments">
 
-    <div v-if="rol==0||rol==1" class="row bg-secondary text-white my-1 col-md-10 mx-auto">
+    <div v-if="rol==0||rol==1" class="row bg-light text-dark my-1 col-md-10 mx-auto">
         <form class="form-group col-md-8" id="comment-form">
             <label for="comentario">Deja tu comentario</label>
             <textarea class="form-control" id="comentario" rows="3"></textarea>
@@ -20,33 +20,24 @@
         </div>
     </div>
     <div class="mx-auto w-75">
-        <h5>Comentarios</h5>
         <div v-if="loading" class="spinner-border"></div>
-        <div class="bg-primary text-center">
-            <p class="h3">Puntaje Promedios del Torneo: {{promedio}}</p>
+        <div class="bg-info text-white text-center">
+            <p class="h3">Puntaje promedio del Torneo: {{promedio}}</p>
         </div>
-        <button id="btn-reload" type="button" class="btn btn-primary btn-block">Refrescar</button>
+        <div class="row">
+            <h5 class="col h3">Comentarios</h5>
+            <button id="btn-reload" type="button" class="btn bg-info text-white col-md-2">Refrescar</button>
+        </div>
         <ul v-if="!loading" id="comments-list" class="list-group list-group-flush">
             <div v-for="comment in comments" class="card">
-                <div class="card-header bg-secondary d-flex justify-content-between align-items-center my-1 row">
-                    <div class="col">
-                        <p>Usuario: {{comment.email}}</p>
-                    </div>
-                    <div class="col">
-                        <p>Nombre: {{comment.nombre}} {{comment.apellido}}</p>
-                    </div>
+                <div class="card-header bg-danger d-flex justify-content-between align-items-center row">
+                    <p class="col h4">Usuario: {{comment.email}}</p>
+                    <p class="col h4">Puntaje: {{comment.votos}}</p>
+                    <button v-if="rol == 1" v-on:click="deleteComment(comment.id_comentario)" class="btn btn-danger col-md-2">Eliminar</button>
                 </div>
-                <div class="card-body my-1">
+                <div class="card-body h5">
                     {{comment.comentario}}
-                    <button v-if="rol == 1" v-on:click="deleteComment(comment.id_comentario)"
-                        class="btn btn-danger">Eliminar</button>
                 </div>
-                <div class="card-footer bg-light text-muted my-1">
-                    <div class="col">
-                        <p>Puntaje: {{comment.votos}}</p>
-                    </div>
-                </div>
-
             </div>
         </ul>
     </div>
