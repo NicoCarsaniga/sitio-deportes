@@ -31,7 +31,7 @@ class Comments extends ConectionModel
     public function getComments($itemId)
     {
         $db = $this->getDb();
-        $sentencia = $db->prepare("SELECT * FROM comentarios INNER JOIN usuarios ON comentarios.id_usuario_fk=usuarios.id_usuario WHERE id_torneo_fk=?");
+        $sentencia = $db->prepare("SELECT comentarios.id_comentario, comentarios.comentario, comentarios.votos, usuarios.email FROM comentarios INNER JOIN usuarios ON comentarios.id_usuario_fk=usuarios.id_usuario WHERE id_torneo_fk=?");
         $sentencia->execute([$itemId]);
         $comments = $sentencia->fetchAll(PDO::FETCH_OBJ);
         return $comments;
