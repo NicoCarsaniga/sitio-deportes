@@ -84,9 +84,7 @@ class TournamentModel extends ConectionModel
      */
     public function editItem($idItem, $tournament, $idSportFK, $country, $description)
     {
-
         $db = $this->getDb();
-
         $sentencia = $db->prepare("UPDATE torneos SET torneo=?, id_deporte_fk=?, pais=?, descripcion=? WHERE id_torneo=?");
         $sentencia->execute([$tournament, $idSportFK, $country, $description, $idItem]);
     }

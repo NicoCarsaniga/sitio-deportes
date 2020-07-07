@@ -36,7 +36,7 @@ class Comments extends ConectionModel
         $comments = $sentencia->fetchAll(PDO::FETCH_OBJ);
         return $comments;
     }
-    
+
     /**
      * Devuelve un comentario
      */

@@ -6,6 +6,7 @@ require_once 'controllers/auth.controller.php';
 
 //defino la base de la url de forma dinámica
 define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
+
 //define la acción por defecto
 if (empty($_GET['action'])) {
     $_GET['action'] = 'index';
@@ -14,13 +15,15 @@ if (empty($_GET['action'])) {
 $action = $_GET['action'];
 $parametros = explode('/', $action);
 
-// decide que camino tomar según TABLA DE RUTEO
+/*
+* Decide que camino tomar según TABLA DE RUTEO
+*/
 switch ($parametros[0]) {
     case 'index':
-        //instancio el objeto de la clase 
         $controller = new SpokonController();
         $controller->showMain();
         break;
+
     case 'addCategory':
         $controller = new AdminController();
         $controller->addCategory();
@@ -40,7 +43,7 @@ switch ($parametros[0]) {
         $controller = new AdminController();
         $controller->showAdminPage();
         break;
-    
+
     case 'addItem':
         $controller = new AdminController();
         $controller->addItem();
@@ -60,12 +63,12 @@ switch ($parametros[0]) {
         $controller = new AdminController();
         $controller->editView($parametros[1]);
         break;
-    
+
     case 'edit':
         $controller = new AdminController();
         $controller->confirmEdition();
         break;
-    
+
     case 'editViewCategory':
         $controller = new AdminController();
         $controller->editViewCategory($parametros[1]);
@@ -81,7 +84,7 @@ switch ($parametros[0]) {
         $controller->deleteCategory($parametros[1]);
         break;
 
-    case "logout": 
+    case "logout":
         $controller = new AuthController();
         $controller->logout();
         break;
@@ -90,7 +93,7 @@ switch ($parametros[0]) {
         $controller = new SpokonController();
         $controller->signIn();
         break;
-    
+
     case "signNewUser":
         $controller = new AuthController();
         $controller->addNewUser();
@@ -105,7 +108,7 @@ switch ($parametros[0]) {
         $controller = new AdminController();
         $controller->editUserRole($parametros[1]);
         break;
-    
+
     case "deleteUser":
         $controller = new AdminController();
         $controller->deleteUser($parametros[1]);
@@ -114,9 +117,10 @@ switch ($parametros[0]) {
     case "deleteImg":
         $controller = new AdminController();
         $controller->deleteImg($parametros[1]);
+        break;
 
     default:
         $controller = new SpokonController();
-        $controller->showError("404 not found",'index');
+        $controller->showError("404 not found", 'index');
         break;
 }

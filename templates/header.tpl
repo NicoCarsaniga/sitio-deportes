@@ -23,10 +23,20 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="nav nav-pills">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" id="navbardrop" data-toggle="dropdown" href="#"><b>Deportes</b></a>
-                        <div class="dropdown-menu bg-info">
+                        <a class="nav-link dropdown-toggle text-white" id="navbardrop" data-toggle="dropdown" href="#">Deportes</a>
+                        <div class="dropdown-menu bg-success">
                             {foreach $categories item=category}
                                 <a class="dropdown-item" href="tournament/{$category->id_deporte}">{$category->deporte}</a>
+                            {/foreach}
+                        </div>
+                    </li>
+                </ul>
+                <ul class="nav nav-pills">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" id="navbardrop" data-toggle="dropdown" href="#">Torneos</a>
+                        <div class="dropdown-menu bg-success">
+                            {foreach $itemList item=torneo}
+                                <a class="dropdown-item" href="item/{$torneo->id_torneo}">{$torneo->torneo}</a>
                             {/foreach}
                         </div>
                     </li>
@@ -59,5 +69,3 @@
             data-user={$USER}
             data-userid={$ID_USER}
             >
-
-        

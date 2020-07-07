@@ -20,21 +20,20 @@ class SpokonController
         $this->modelCategory = new CategoryModel();
         $this->modelImg = new Images();
         $categories = $this->modelCategory->getCategoryList();
-        $this->view = new SpokonView($categories);
+        $itemList = $this->modelItem->getItemList();
+        $this->view = new SpokonView($categories, $itemList);
         $this->viewError = new ErrorView();
     }
-    
+
     /**
      * Pag principal y publica 
      */
     public function showMain()
     {
-        //data para el main
-        $itemList = $this->modelItem->getItemList();
         $top3 = $this->modelItem->getItemListByVotos();
-
-        $this->view->showMainView($itemList, $top3);
+        $this->view->showMainView($top3);
     }
+
     /**
      * Muestra lista de item
      */
@@ -45,7 +44,7 @@ class SpokonController
 
         $this->view->showItemListById($itemListById, $tournamentById);
     }
-    
+
     /**
      * Muestra detalle de item
      */
@@ -53,14 +52,15 @@ class SpokonController
     {
         $itemInfo = $this->modelItem->getItemInfo($id_item);
         $img =  $this->modelImg->getImgPath($id_item);
-        
-        if($img){//si no tiene img cargada muestra una por default
+
+        if ($img) { //si no tiene img cargada muestra una por default
             $imgPath = $img->ruta;
-        }else{
+        } else {
             $imgPath = 'img/default-image.png';
         }
         $this->view->showItem($itemInfo, $imgPath);
     }
+
     /**
      * Pag de errores por deafult
      */
@@ -72,9 +72,8 @@ class SpokonController
     /**
      * Muestra formulario para inscripcion
      */
-    public function signIn(){
-
+    public function signIn()
+    {
         $this->view->showForm();
     }
-
 }

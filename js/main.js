@@ -10,7 +10,6 @@ let itemId = itemInfo.dataset.infoItem;
 /**
  * Botón que envía mediante API REST un comentario
  */
-
 // Instancio la app VUE
 let app = new Vue({
     el: "#comments",
@@ -28,29 +27,31 @@ let app = new Vue({
     }
 });
 
+//se recarga cada 30 seg
 document.getElementById("btn-reload").addEventListener('click', getComments);
-//setInterval(getComments, 30000);
+setInterval(getComments, 30000);
 
 getComments();
 
-
 /**
- * Trae todos los comentarios según el torneo
+ * Realiza el promedio de puntajes ingresados en los comentarios de los usuarios
  */
-function promedio(comments){
+function promedio(comments) {
     let suma = 0;
-    if(comments.length == 0){
+    if (comments.length == 0) {
         return 0;
     }
-    for(let i=0;i<comments.length;i++){
+    for (let i = 0; i < comments.length; i++) {
         suma += parseInt(comments[i].votos);
     }
-    
-    return suma/comments.length;
+    return suma / comments.length;
 }
 
+/**
+ *  Trae todos los comentarios mediante API REST
+ */
 async function getComments() {
-    
+
     app.loading = true;
     try {
         let respuesta = await fetch(APIurl + itemId);
@@ -64,8 +65,9 @@ async function getComments() {
     }
 }
 
+// Botón agregar comentario
+document.querySelector("#btn-addComment").addEventListener('click', addComment);
 
-document.querySelector("#btn-addComment").addEventListener('click',addComment);
 /**
  * Envía un comentario mediante API REST
  */
@@ -76,7 +78,7 @@ async function addComment() {
             "id_torneo_fk": itemId,
             "votos": document.querySelector("#puntaje").value,
             "id_usuario_fk": info.dataset.userid
-        } 
+        }
         console.log(data);
         let respuesta = await fetch(APIurl + itemId, {
             "method": "POST",
@@ -85,22 +87,23 @@ async function addComment() {
         });
         let json = await respuesta.json();
     }
-    catch (e){
+    catch (e) {
         console.log(e);
     }
 }
+
 /**
- * elmina los comentarios de los torneos
+ * Elimina un comentario 
  */
-async function delete_comment(id){
-    try{
-        let response = await fetch(APIurl + id,{
-                "method" : "DELETE"
-            });
+async function delete_comment(id) {
+    try {
+        let response = await fetch(APIurl + id, {
+            "method": "DELETE"
+        });
         let json = await response.json();
         getComments();
     }
-    catch (e){
+    catch (e) {
         console.log(e);
     }
 }

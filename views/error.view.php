@@ -21,5 +21,4 @@ class ErrorView
         $this->smarty->assign('page', $page);
         $this->smarty->display('showError.tpl');
     }
-
 }

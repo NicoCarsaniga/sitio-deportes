@@ -11,6 +11,6 @@
       <input type="password" class="form-control" name="password" placeholder="Password">
     </div>
         <input type="submit" class="btn btn-primary"/>
-    </form>
+</form>
 
-    {include 'footer.tpl'}
+{include 'footer.tpl'}

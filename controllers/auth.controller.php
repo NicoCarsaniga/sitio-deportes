@@ -50,21 +50,21 @@ class AuthController
         $surname = $_POST['surname'];
         $role = $_POST['rol'];
 
+        // Se busca si el mail ya figura en la base de datos
         $userdb = $this->model->getUser($email);
-
         if (!empty($userdb)) {
             $this->view->showError("Ese mail ya esta registrado", 'signIn');
             die();
         }
-        //encripto el password
+        // Encripto el password
         $hash = password_hash($password, PASSWORD_DEFAULT);
 
         if (empty($email && $hash && $name && $surname)) {
             $this->view->showError("Faltan datos obligatorios", 'signIn');
             die();
         }
-        $success = $this->model->addUser($email, $hash, $name, $surname, $role);
 
+        $success = $this->model->addUser($email, $hash, $name, $surname, $role);
         if ($success) {
             $user = $this->model->getUser($email);
             AuthHelper::SetSessionData($user);
@@ -74,6 +74,9 @@ class AuthController
         header('Location: ' . BASE_URL . "index");
     }
 
+    /**
+     * Redirige de acuerdo al rol del usuario
+     */
     public function redirect()
     {
         if ($_SESSION['ROL'])

@@ -4,8 +4,6 @@ require_once 'conection.model.php';
 
 class Images extends ConectionModel
 {
-
-    
     /**
      * Adición de imágenes
      */

@@ -21,9 +21,10 @@ class AdminController
         $this->modelItem = new TournamentModel();
         $this->modelCategory = new CategoryModel();
         $categories = $this->modelCategory->getCategoryList();
+        $itemList = $this->modelItem->getItemList();
         $this->modelImg = new Images();
         $this->modelUser = new UsersModel();
-        $this->view = new AdminView($categories);
+        $this->view = new AdminView($categories, $itemList);
         $this->viewError = new ErrorView();
         AuthHelper::checkLogged();
         $this->admin = AuthHelper::role();
@@ -35,8 +36,7 @@ class AdminController
     public function showAdminPage()
     {
         if ($this->admin) {
-            $itemList = $this->modelItem->getItemList();
-            $this->view->adminPage($itemList);
+            $this->view->adminPage();
         } else {
             $this->viewError->showError("Regístrese como administrador para acceder a esta página", 'index');
         }
@@ -126,9 +126,9 @@ class AdminController
     {
         $infoItem = $this->modelItem->getItemInfo($idItem);
         $img =  $this->modelImg->getImgPath($idItem);
-        if($img){
+        if ($img) {
             $imgPath = $img->ruta;
-        }else{
+        } else {
             $imgPath = 'img/default-image.png';
         }
         $this->view->editView($infoItem, $imgPath);
@@ -241,9 +241,9 @@ class AdminController
 
         $success = $this->modelImg->deleteImg($idItem);
 
-        if(isset($success)){
+        if (isset($success)) {
             header('Location: ' . BASE_URL . "editView/" . $idItem);
-        }else{
+        } else {
             $this->viewError->showError("No se pudo eliminar la imagen.", 'adminPage');
         }
     }

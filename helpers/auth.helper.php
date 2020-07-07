@@ -9,6 +9,7 @@ class AuthHelper
             session_start();
         }
     }
+
     /**
      *  Verifica que este loggeado, en caso de que no lo envía al home y corta la ejecución
      */
@@ -20,10 +21,10 @@ class AuthHelper
             die();
         }
     }
+
     /**
      * Devuelve true en caso de estar loggeado
      */
-
     static public function isLogged()
     {
         self::start();
@@ -33,6 +34,7 @@ class AuthHelper
             return false;
         }
     }
+
     /**
      * Devuelve el email de usuario loggeado
      */
@@ -45,6 +47,7 @@ class AuthHelper
             return false;
         }
     }
+
     /**
      * Asigna los valores de sesion id, email y el estado log
      */

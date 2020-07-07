@@ -27,8 +27,9 @@ class CommentApiController
         $this->view->response($comments, 200);
     }
     
-    // Elimina las comentario por ID
-    
+    /**
+     * Elimina las comentario por ID
+     */
     public function deleteComment($params = [])
     {
         //Traigo el ID del comentario a eliminar

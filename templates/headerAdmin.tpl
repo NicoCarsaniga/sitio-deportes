@@ -30,11 +30,22 @@
                         </div>
                     </li>
                 </ul>
-                <div>
-                    <a href="adminPage" type="button" class="btn btn-warning">{$USER}</a>
-                    <a href="logout" type="button" class="btn btn-danger">Cerrar sesión</a>
-                    <a href="users"type="buton" class="btn btn-info">lista de usuarios</a>
-                </div>
+                <ul class="nav nav-pills">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" id="navbardrop" data-toggle="dropdown" href="#">Torneos</a>
+                        <div class="dropdown-menu bg-success">
+                            {foreach $itemList item=torneo}
+                                <a class="dropdown-item" href="item/{$torneo->id_torneo}">{$torneo->torneo}</a>
+                            {/foreach}
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <a href="adminPage" type="button" class="btn btn-warning">{$USER}</a>
+                <a href="logout" type="button" class="btn btn-danger">Cerrar sesión</a>
+                <a href="users"type="buton" class="btn btn-info">lista de usuarios</a>
+            </div>
             </div>
     </nav>
     <div class="container-fluid mb-10"

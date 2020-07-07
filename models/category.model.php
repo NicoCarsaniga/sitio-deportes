@@ -3,7 +3,9 @@
 require_once 'conection.model.php';
 class CategoryModel extends ConectionModel
 {
-    //devuelve la lista de categorias
+    /**
+     * devuelve la lista de categorias
+     */
     public function getCategoryList()
     {
         $db = $this->getDb();
@@ -14,17 +16,21 @@ class CategoryModel extends ConectionModel
 
         return $sports;
     }
-    //inserta nueva categoria
+
+    /**
+     * Inserta nueva categoria
+     */
     public function insert($newSport)
     {
         $db = $this->getDb();
 
         $sentencia = $db->prepare("INSERT INTO deportes(deporte) VALUES(?)");
         $sentencia->execute([$newSport]);
-
-        
     }
-    //devuelve categoria por id
+
+    /**
+     * Devuelve categoria por id
+     */
     public function getCategoryById($id_deporte)
     {
         $db = $this->getDb();
@@ -35,7 +41,10 @@ class CategoryModel extends ConectionModel
 
         return $deporte;
     }
-    //funcion para editar categorias
+
+    /**
+     * Funcion para editar categorias
+     */
     public function editCategory($idCategory, $sport)
     {
         $db = $this->getDb();
@@ -43,7 +52,10 @@ class CategoryModel extends ConectionModel
         $sentencia = $db->prepare("UPDATE deportes SET deporte=? WHERE id_deporte=?");
         $sentencia->execute([$sport, $idCategory]);
     }
-    //funcion para eliminar una categoria
+
+    /**
+     * Funcion para eliminar una categoria
+     */
     public function deleteCategory($idCategory)
     {
         $db = $this->getDb();

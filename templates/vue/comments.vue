@@ -26,7 +26,6 @@
             <p class="h3">Puntaje Promedios del Torneo: {{promedio}}</p>
         </div>
         <button id="btn-reload" type="button" class="btn btn-primary btn-block">Refrescar</button>
-        <!--Quiero sacarlo!!-->
         <ul v-if="!loading" id="comments-list" class="list-group list-group-flush">
             <div v-for="comment in comments" class="card">
                 <div class="card-header bg-secondary d-flex justify-content-between align-items-center my-1 row">
@@ -39,7 +38,8 @@
                 </div>
                 <div class="card-body my-1">
                     {{comment.comentario}}
-                    <button v-if="rol == 1" v-on:click="deleteComment(comment.id_comentario)" class="btn btn-danger">Eliminar</button>
+                    <button v-if="rol == 1" v-on:click="deleteComment(comment.id_comentario)"
+                        class="btn btn-danger">Eliminar</button>
                 </div>
                 <div class="card-footer bg-light text-muted my-1">
                     <div class="col">

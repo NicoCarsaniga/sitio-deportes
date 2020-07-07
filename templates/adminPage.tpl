@@ -20,7 +20,7 @@
         <div class="col-md-6">
             <table class="table bg-light">
                 <tbody>
-                {foreach $items item=tournament}
+                {foreach $itemList item=tournament}
                     <tr>
                         <td><a class="nav-link" href="item/{$tournament->id_torneo}">{$tournament->torneo}</a></td>
                         <td><a href="editView/{$tournament->id_torneo}" class="btn btn-warning"><i class="fas fa-edit"></i></td>
